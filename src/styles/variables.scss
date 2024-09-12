@@ -4,13 +4,20 @@
   --text-color: #ffffff;
   --text-color-secondary: #b9b9b9;
   --background-color: #030304;
+  --text-gradient: linear-gradient(
+    90.18deg,
+    #00ce2c 0.18%,
+    #aedf23 49.3%,
+    #a3dc00 99.88%
+  );
 
   --font-family-main: 'Poppins', sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.125rem;
-  --font-size-xl: 1.5rem;
+  --font-size-xl: 1.6rem;
+  --font-size-xxl: 2rem;
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
