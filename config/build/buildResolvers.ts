@@ -11,6 +11,7 @@ export function buildResolvers(
     alias: {
       '@public': options.paths.public,
       '@components': path.resolve(options.paths.src, 'components'),
+      '@styles': path.resolve(options.paths.src, 'styles'),
       '@constants': path.resolve(options.paths.src, 'constants'),
       '@context': path.resolve(options.paths.src, 'context'),
       '@hooks': path.resolve(options.paths.src, 'hooks'),
