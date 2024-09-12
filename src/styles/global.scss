@@ -40,13 +40,9 @@ h6 {
 }
 
 a {
-  color: var(--primary-color);
+  color: var(--text-color);
   text-decoration: none;
   cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 img {

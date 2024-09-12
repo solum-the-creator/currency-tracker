@@ -1,0 +1,45 @@
+.toggle {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  width: 3.2em;
+  height: 1.9em;
+  border-radius: 1em;
+  border: 2px solid #fff;
+  background-color: transparent;
+  transition: border-color ease 0.3s;
+
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: var(--z-index-low);
+    width: 1.8em;
+    height: 1.8em;
+    font-size: 1em;
+    line-height: 1.8em;
+    font-weight: 500;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 1.5em;
+    transform: translateX(-0.1em);
+    transition:
+      transform cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s,
+      background-color ease-in-out 0.2s;
+  }
+
+  &:checked {
+    border-color: var(--text-color-accent);
+  }
+
+  &:checked::before {
+    background-color: var(--text-color-accent);
+    border-color: var(--text-color-accent);
+    transform: translateX(1.3em);
+  }
+}
