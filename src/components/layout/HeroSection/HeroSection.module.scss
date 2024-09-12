@@ -1,0 +1,77 @@
+@import '@/styles/mixins.scss';
+
+.hero_section {
+  width: 100%;
+  padding: 2rem 2rem 4rem;
+  display: flex;
+  justify-content: center;
+
+  background: var(--background-gradient);
+
+  .container {
+    width: 100%;
+    max-width: var(--screen-lg);
+    display: flex;
+    justify-content: flex-start;
+
+    .content_wrapper {
+      display: flex;
+
+      gap: 1rem;
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .title {
+          @include text-gradient(var(--text-gradient));
+          font-size: 4.75rem;
+          font-weight: 600;
+          line-height: 1.6;
+          text-align: right;
+
+          padding-right: 3rem;
+
+          @media screen and (max-width: 768px) {
+            text-align: center;
+            padding-right: 0;
+          }
+        }
+
+        .description_wrapper {
+          display: flex;
+          justify-content: flex-end;
+
+          @media screen and (max-width: 768px) {
+            justify-content: center;
+          }
+
+          .description {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-light);
+            max-width: var(--width-large);
+            text-align: center;
+            line-height: 1.8;
+          }
+        }
+      }
+
+      .image {
+        width: 100%;
+        max-width: 19rem;
+        display: flex;
+        align-items: center;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+
+        .svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}
