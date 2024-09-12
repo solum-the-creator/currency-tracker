@@ -1,0 +1,13 @@
+# Ignore build output
+dist/
+
+# Ignore test coverage reports
+coverage/
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore specific files
+*.min.js
+*.bundle.js
