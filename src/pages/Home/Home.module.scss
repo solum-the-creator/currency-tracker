@@ -1,0 +1,14 @@
+.currency_section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem 4rem;
+
+  .content {
+    width: 100%;
+    max-width: var(--screen-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+}

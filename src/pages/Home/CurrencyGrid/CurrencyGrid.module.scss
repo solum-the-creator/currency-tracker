@@ -1,0 +1,24 @@
+.currency_block {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 520px));
+  justify-content: space-between;
+  gap: 3.5rem;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+
+    .title_text {
+      font-size: var(--font-size-xxl);
+      font-weight: var(--font-weight-light);
+      margin-bottom: 1.6rem;
+    }
+
+    .line {
+      width: 100%;
+      height: 2px;
+      background-color: var(--divider-color);
+    }
+  }
+}

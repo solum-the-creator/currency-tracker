@@ -1,0 +1,37 @@
+.currency_card {
+  width: 100%;
+  max-width: 32.5rem;
+  padding: 2rem;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--divider-color);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+
+  .currency_card_icon {
+    width: 5rem;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .currency_card_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .currency_name {
+      font-size: 2.2rem;
+      color: var(--text-color-secondary);
+    }
+
+    .currency_value {
+      font-size: 2rem;
+      font-weight: var(--font-weight-light);
+      color: var(--text-color-light-gray);
+    }
+  }
+}
