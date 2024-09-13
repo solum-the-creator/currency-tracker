@@ -1,7 +1,8 @@
 import { Footer } from '@components/layout/Footer';
 import { Header } from '@components/layout/Header';
+import { HeroSection } from '@components/layout/HeroSection';
+import { LastUpdate } from '@components/layout/LastUpdate';
 
-import { HeroSection } from '../HeroSection';
 import styles from './MainLayout.module.scss';
 
 type MainLayoutProps = {
@@ -14,6 +15,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       <Header />
       <main className={styles.main}>
         <HeroSection />
+        <LastUpdate />
         {children}
       </main>
       <Footer />
