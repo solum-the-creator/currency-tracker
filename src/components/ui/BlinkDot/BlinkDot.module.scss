@@ -1,0 +1,43 @@
+.blinking_container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .blinking_dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #02461f;
+    position: relative;
+
+    .inner_circle {
+      position: relative;
+      z-index: var(--z-index-low);
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: #019840;
+      animation: pulse 2s infinite ease-in-out;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
