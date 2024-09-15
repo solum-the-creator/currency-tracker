@@ -6,7 +6,11 @@ import {
   ExchangeRatesResponse,
   ExchangeRatesState,
 } from '@customTypes/currecny';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import type { RootState } from '../store';
@@ -70,5 +74,17 @@ const currenciesSlice = createSlice({
 });
 
 export const selectCurrencies = (state: RootState) => state.currencies;
+export const selectCurrencyByCode = (code: CurrenciesCode) =>
+  createSelector(
+    (state: RootState) => state.currencies.data,
+    (currencies) => {
+      const selectedCurrency = currencies.find(
+        (currency) => currency.code === code,
+      );
+      return selectedCurrency
+        ? { price: selectedCurrency.price, symbol: selectedCurrency.symbol }
+        : null;
+    },
+  );
 
 export default currenciesSlice.reducer;

@@ -11,6 +11,7 @@
 
   .currency_card_icon {
     width: 5rem;
+    min-width: 5rem;
 
     svg {
       width: 100%;
@@ -24,7 +25,7 @@
     justify-content: space-between;
 
     .currency_name {
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: var(--text-color-secondary);
     }
 

@@ -5,8 +5,8 @@ export type CurrenciesCode =
   | 'CAD'
   | 'CNY'
   | 'JPY'
-  | 'BTC'
-  | 'ETH';
+  | 'BYN'
+  | 'RUB';
 
 export type CurrencyInfo = {
   code: CurrenciesCode;

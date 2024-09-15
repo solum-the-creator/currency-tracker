@@ -31,15 +31,15 @@ export const currencyDetails: Record<CurrenciesCode, CurrencyInfo> = {
     name: 'Japanese Yen',
     symbol: '¥',
   },
-  BTC: {
-    code: 'BTC',
-    name: 'Bitcoin',
-    symbol: '₿',
+  RUB: {
+    code: 'RUB',
+    name: 'Russian Ruble',
+    symbol: '₽',
   },
-  ETH: {
-    code: 'ETH',
-    name: 'Ethereum',
-    symbol: 'Ξ',
+  BYN: {
+    code: 'BYN',
+    name: 'Belarusian ruble',
+    symbol: 'Br',
   },
 };
 
