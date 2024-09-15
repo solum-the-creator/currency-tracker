@@ -20,7 +20,7 @@
   ],
   "plugins": ["@typescript-eslint", "react", "prettier", "simple-import-sort"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-console": "warn",
@@ -39,6 +39,7 @@
     ],
     "react/jsx-boolean-value": ["error", "always"],
     "react/jsx-props-no-spreading": "off",
+    "no-param-reassign": ["error", { "props": false }],
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "class-methods-use-this": "off",

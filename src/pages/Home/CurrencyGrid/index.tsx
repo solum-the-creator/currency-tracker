@@ -1,11 +1,11 @@
-import { Currency } from '@constants/currency';
+import { EnrichedCurrency } from '@customTypes/currecny';
 
 import { CurrencyCard } from './CurrencyCard';
 import styles from './CurrencyGrid.module.scss';
 
 type CurrencyGridProps = {
   title: string;
-  currencyList: Currency[];
+  currencyList: EnrichedCurrency[];
 };
 
 export function CurrencyGrid({ title, currencyList }: CurrencyGridProps) {
@@ -17,7 +17,7 @@ export function CurrencyGrid({ title, currencyList }: CurrencyGridProps) {
       </div>
       <div className={styles.empty} />
       {currencyList.map((currency) => (
-        <CurrencyCard key={currency.id} {...currency} />
+        <CurrencyCard key={currency.code} {...currency} />
       ))}
     </div>
   );
