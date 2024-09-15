@@ -1,3 +1,4 @@
+import { isUpdateDayPassed } from '@utils/dateUtils';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,12 +13,18 @@ import styles from './Home.module.scss';
 
 export function Home() {
   const dispatch = useDispatch<AppDispatch>();
-
-  const { data = [], loading, error } = useSelector(selectCurrencies);
+  const {
+    data = [],
+    loading,
+    error,
+    lastUpdated,
+  } = useSelector(selectCurrencies);
 
   useEffect(() => {
-    dispatch(fetchCurrencies());
-  }, [dispatch]);
+    if (isUpdateDayPassed(lastUpdated)) {
+      dispatch(fetchCurrencies());
+    }
+  }, [dispatch, lastUpdated]);
 
   if (loading) return <p>Загрузка...</p>;
   if (error) return <p>Ошибка: {error}</p>;

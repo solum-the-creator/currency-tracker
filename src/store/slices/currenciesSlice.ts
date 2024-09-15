@@ -21,6 +21,7 @@ const initialState: ExchangeRatesState = {
   data: [],
   loading: false,
   error: null,
+  lastUpdated: null,
 };
 
 export const fetchCurrencies = createAsyncThunk(
@@ -65,6 +66,7 @@ const currenciesSlice = createSlice({
       .addCase(fetchCurrencies.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        state.lastUpdated = Date.now();
       })
       .addCase(fetchCurrencies.rejected, (state, action) => {
         state.loading = false;
@@ -74,6 +76,8 @@ const currenciesSlice = createSlice({
 });
 
 export const selectCurrencies = (state: RootState) => state.currencies;
+export const selectLastUpdated = (state: RootState) =>
+  state.currencies.lastUpdated;
 export const selectCurrencyByCode = (code: CurrenciesCode) =>
   createSelector(
     (state: RootState) => state.currencies.data,

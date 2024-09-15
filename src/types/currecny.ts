@@ -25,6 +25,7 @@ export type ExchangeRatesState = {
   data: EnrichedCurrency[];
   loading: boolean;
   error: string | null;
+  lastUpdated: number | null;
 };
 
 export type ExchangeRatesResponse = {
