@@ -13,9 +13,7 @@ export function LastUpdate() {
     <section className={styles.last_update_section}>
       <div className={styles.last_update}>
         <BlinkDot />
-        <p className={styles.last_update_text}>
-          Last updated at {formatTime(lastUpdated)}
-        </p>
+        <p className={styles.last_update_text}>Last updated at {formatTime(lastUpdated)}</p>
       </div>
     </section>
   );

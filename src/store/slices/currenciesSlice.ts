@@ -6,11 +6,7 @@ import {
   ExchangeRatesResponse,
   ExchangeRatesState,
 } from '@customTypes/currecny';
-import {
-  createAsyncThunk,
-  createSelector,
-  createSlice,
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import type { RootState } from '../store';
@@ -24,34 +20,26 @@ const initialState: ExchangeRatesState = {
   lastUpdated: null,
 };
 
-export const fetchCurrencies = createAsyncThunk(
-  'currencies/fetchCurrencies',
-  async () => {
-    const response = await axios.get<ExchangeRatesResponse>(
-      LATEST_RATES_ENDPOINT,
-      {
-        params: {
-          apikey: API_KEY,
-          currencies: currenciesCodes.join(','),
-        },
-      },
-    );
+export const fetchCurrencies = createAsyncThunk('currencies/fetchCurrencies', async () => {
+  const response = await axios.get<ExchangeRatesResponse>(LATEST_RATES_ENDPOINT, {
+    params: {
+      apikey: API_KEY,
+      currencies: currenciesCodes.join(','),
+    },
+  });
 
-    const currencies = response.data.data;
+  const currencies = response.data.data;
 
-    const enrichedCurrencies: EnrichedCurrency[] = Object.keys(currencies).map(
-      (code) => {
-        const currencyCode = code as CurrenciesCode;
-        return {
-          ...currencyDetails[currencyCode],
-          price: currencies[currencyCode].value,
-        };
-      },
-    );
+  const enrichedCurrencies: EnrichedCurrency[] = Object.keys(currencies).map((code) => {
+    const currencyCode = code as CurrenciesCode;
+    return {
+      ...currencyDetails[currencyCode],
+      price: currencies[currencyCode].value,
+    };
+  });
 
-    return enrichedCurrencies;
-  },
-);
+  return enrichedCurrencies;
+});
 
 const currenciesSlice = createSlice({
   name: 'currencies',
@@ -76,15 +64,12 @@ const currenciesSlice = createSlice({
 });
 
 export const selectCurrencies = (state: RootState) => state.currencies;
-export const selectLastUpdated = (state: RootState) =>
-  state.currencies.lastUpdated;
+export const selectLastUpdated = (state: RootState) => state.currencies.lastUpdated;
 export const selectCurrencyByCode = (code: CurrenciesCode) =>
   createSelector(
     (state: RootState) => state.currencies.data,
     (currencies) => {
-      const selectedCurrency = currencies.find(
-        (currency) => currency.code === code,
-      );
+      const selectedCurrency = currencies.find((currency) => currency.code === code);
       return selectedCurrency
         ? { price: selectedCurrency.price, symbol: selectedCurrency.symbol }
         : null;
