@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .button {
+    width: auto;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    color: var(--text-color-secondary);
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--divider-color);
+      color: var(--text-color);
+    }
+  }
+}

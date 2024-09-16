@@ -1,0 +1,51 @@
+.select_wrapper {
+  .select {
+    position: relative;
+    min-width: var(--width-small);
+
+    .label {
+      margin-right: 0.5rem;
+    }
+
+    svg {
+      position: absolute;
+      right: 0.5rem;
+      top: calc(50% - 3px);
+      width: 0.6rem;
+      height: 0.4rem;
+      stroke-width: 2px;
+      stroke: var(--stroke-color);
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
+      transition: stroke 0.2s ease;
+    }
+
+    select {
+      appearance: none;
+      padding: 0.4rem 2rem 0.4rem 0.6rem;
+      border: none;
+      border-radius: 0.2rem;
+      background: var(--primary-color);
+      color: var(--text-color);
+      cursor: pointer;
+
+      option {
+        background-color: var(--secondary-color);
+      }
+
+      &:hover + svg {
+        stroke: var(--text-color);
+      }
+    }
+
+    .sprites {
+      position: absolute;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+}

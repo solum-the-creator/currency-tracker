@@ -43,6 +43,4 @@ export const currencyDetails: Record<CurrenciesCode, CurrencyInfo> = {
   },
 };
 
-export const currenciesCodes: CurrenciesCode[] = Object.keys(
-  currencyDetails,
-) as CurrenciesCode[];
+export const currenciesCodes: CurrenciesCode[] = Object.keys(currencyDetails) as CurrenciesCode[];
