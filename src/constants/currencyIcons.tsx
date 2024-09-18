@@ -10,13 +10,13 @@ import { CurrenciesCode } from '@customTypes/currency';
 
 export type SVGIcon = React.FC<React.SVGProps<SVGElement>>;
 
-export const currencyIcons: Record<CurrenciesCode, SVGIcon> = {
-  USD: DollarIcon,
-  BRL: BRLIcon,
-  EUR: EuroIcon,
-  CAD: CanadianDollarIcon,
-  CNY: YuanIcon,
-  JPY: YenIcon,
-  BYN: BYNIcon,
-  RUB: RUBIcon,
+export const currencyIcons: Record<CurrenciesCode, React.ReactElement<SVGIcon>> = {
+  USD: <DollarIcon />,
+  BRL: <BRLIcon />,
+  EUR: <EuroIcon />,
+  CAD: <CanadianDollarIcon />,
+  CNY: <YuanIcon />,
+  JPY: <YenIcon />,
+  BYN: <BYNIcon />,
+  RUB: <RUBIcon />,
 };

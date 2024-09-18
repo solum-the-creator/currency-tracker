@@ -32,11 +32,10 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({ code, name, price })
     setConvertCode(currencyCode);
   };
 
-  const Icon = currencyIcons[code];
-  const icon = Icon ? <Icon /> : <DefaultIcon />;
+  const icon = currencyIcons[code] || <DefaultIcon />;
 
   return (
-    <div>
+    <>
       <div
         className={styles.currencyCard}
         onClick={openModal}
@@ -60,6 +59,6 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({ code, name, price })
           onCurrencyChange={handleCurrencyChange}
         />
       )}
-    </div>
+    </>
   );
 };
