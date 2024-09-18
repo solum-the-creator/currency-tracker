@@ -6,7 +6,7 @@ import EuroIcon from '@assets/images/icons/euro.svg';
 import RUBIcon from '@assets/images/icons/rub.svg';
 import YuanIcon from '@assets/images/icons/won.svg';
 import YenIcon from '@assets/images/icons/yen.svg';
-import { CurrenciesCode } from '@customTypes/currecny';
+import { CurrenciesCode } from '@customTypes/currency';
 
 export type SVGIcon = React.FC<React.SVGProps<SVGElement>>;
 

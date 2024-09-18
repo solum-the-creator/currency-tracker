@@ -1,4 +1,4 @@
-import { CurrenciesCode, CurrencyInfo } from '@customTypes/currecny';
+import { CurrenciesCode, CurrencyInfo } from '@customTypes/currency';
 
 export const currencyDetails: Record<CurrenciesCode, CurrencyInfo> = {
   USD: {

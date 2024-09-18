@@ -3,9 +3,9 @@ import { Toggle } from '@components/ui/Toggle';
 import { NAV_LINKS } from '@constants/paths';
 import { NavLink } from 'react-router-dom';
 
-import styles from './Header.module.scss';
+import styles from './index.module.scss';
 
-export function Header() {
+export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.content_wrapper}>
@@ -32,4 +32,4 @@ export function Header() {
       </div>
     </header>
   );
-}
+};

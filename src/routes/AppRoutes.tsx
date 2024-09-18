@@ -6,7 +6,7 @@ import { Home } from '@pages/Home';
 import { Timeline } from '@pages/Timeline';
 import { Route, Routes } from 'react-router-dom';
 
-export function AppRoutes() {
+export const AppRoutes = () => {
   return (
     <MainLayout>
       <Routes>
@@ -17,4 +17,4 @@ export function AppRoutes() {
       </Routes>
     </MainLayout>
   );
-}
+};

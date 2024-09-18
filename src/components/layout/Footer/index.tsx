@@ -1,9 +1,9 @@
 import { Logo } from '@components/ui/Logo';
 import { Link } from 'react-router-dom';
 
-import styles from './Footer.module.scss';
+import styles from './index.module.scss';
 
-export function Footer() {
+export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.content_wrapper}>
@@ -60,4 +60,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+};

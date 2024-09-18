@@ -5,7 +5,7 @@ import {
   EnrichedCurrency,
   ExchangeRatesResponse,
   ExchangeRatesState,
-} from '@customTypes/currecny';
+} from '@customTypes/currency';
 import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 

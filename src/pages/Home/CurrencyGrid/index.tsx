@@ -1,14 +1,14 @@
-import { EnrichedCurrency } from '@customTypes/currecny';
+import { EnrichedCurrency } from '@customTypes/currency';
 
 import { CurrencyCard } from './CurrencyCard';
-import styles from './CurrencyGrid.module.scss';
+import styles from './index.module.scss';
 
 type CurrencyGridProps = {
   title: string;
   currencyList: EnrichedCurrency[];
 };
 
-export function CurrencyGrid({ title, currencyList }: CurrencyGridProps) {
+export const CurrencyGrid: React.FC<CurrencyGridProps> = ({ title, currencyList }) => {
   return (
     <div className={styles.currency_block}>
       <div className={styles.title}>
@@ -21,4 +21,4 @@ export function CurrencyGrid({ title, currencyList }: CurrencyGridProps) {
       ))}
     </div>
   );
-}
+};

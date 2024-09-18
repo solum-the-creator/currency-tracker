@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import styles from './Toggle.module.scss';
+import styles from './index.module.scss';
 
 export type ToggleProps = {
   checked?: boolean;
   onChange?: () => void;
 };
-export function Toggle({ onChange = () => {}, checked = false }: ToggleProps) {
+export const Toggle: React.FC<ToggleProps> = ({ onChange = () => {}, checked = false }) => {
   const [checkedState, setCheckedState] = useState(checked);
 
   const onChangeHandler = () => {
@@ -22,4 +22,4 @@ export function Toggle({ onChange = () => {}, checked = false }: ToggleProps) {
       type="checkbox"
     />
   );
-}
+};

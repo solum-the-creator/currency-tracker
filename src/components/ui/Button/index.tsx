@@ -1,6 +1,9 @@
-import styles from './Button.module.scss';
+import styles from './index.module.scss';
 
-export function Button({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+export const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  children,
+  ...props
+}) => {
   return (
     <div className={styles.wrapper}>
       <button className={styles.button} type="button" {...props}>
@@ -8,4 +11,4 @@ export function Button({ children, ...props }: React.ButtonHTMLAttributes<HTMLBu
       </button>
     </div>
   );
-}
+};

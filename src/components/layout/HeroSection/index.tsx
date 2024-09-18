@@ -1,8 +1,8 @@
 import LogoSvg from '@assets/images/logo.svg';
 
-import styles from './HeroSection.module.scss';
+import styles from './index.module.scss';
 
-export function HeroSection() {
+export const HeroSection = () => {
   return (
     <section className={styles.hero_section}>
       <div className={styles.container}>
@@ -22,4 +22,4 @@ export function HeroSection() {
       </div>
     </section>
   );
-}
+};

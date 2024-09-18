@@ -1,7 +1,7 @@
 import LogoSvg from '@assets/images/logo.svg';
 import { Link } from 'react-router-dom';
 
-import styles from './Logo.module.scss';
+import styles from './index.module.scss';
 
 type LogoProps = {
   withText?: boolean;
@@ -9,7 +9,7 @@ type LogoProps = {
   height?: number;
 };
 
-export function Logo({ withText = false, width = 40, height = 40 }: LogoProps) {
+export const Logo: React.FC<LogoProps> = ({ withText = false, width = 40, height = 40 }) => {
   return (
     <Link to="/">
       <div className={styles.logo}>
@@ -18,4 +18,4 @@ export function Logo({ withText = false, width = 40, height = 40 }: LogoProps) {
       </div>
     </Link>
   );
-}
+};

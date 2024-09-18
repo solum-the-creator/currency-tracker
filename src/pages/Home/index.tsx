@@ -6,9 +6,9 @@ import { fetchCurrencies, selectCurrencies } from '@/store/slices/currenciesSlic
 import { AppDispatch } from '@/store/store';
 
 import { CurrencyGrid } from './CurrencyGrid';
-import styles from './Home.module.scss';
+import styles from './index.module.scss';
 
-export function Home() {
+export const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { data = [], loading, error, lastUpdated } = useSelector(selectCurrencies);
 
@@ -28,4 +28,4 @@ export function Home() {
       </div>
     </section>
   );
-}
+};

@@ -1,6 +1,6 @@
-import { CurrenciesCode } from '@customTypes/currecny';
+import { CurrenciesCode } from '@customTypes/currency';
 
-import styles from './CurrencySelect.module.scss';
+import styles from './index.module.scss';
 
 export type CurrencySelectProps = {
   currencies: CurrenciesCode[];
@@ -8,12 +8,12 @@ export type CurrencySelectProps = {
   onCurrencyChange?: (code: CurrenciesCode) => void;
   label?: string;
 };
-export function CurrencySelect({
+export const CurrencySelect: React.FC<CurrencySelectProps> = ({
   selectedCurrency,
   currencies,
   onCurrencyChange = () => {},
   label = '',
-}: CurrencySelectProps) {
+}) => {
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onCurrencyChange(event.target.value as CurrenciesCode);
   };
@@ -40,4 +40,4 @@ export function CurrencySelect({
       </label>
     </div>
   );
-}
+};

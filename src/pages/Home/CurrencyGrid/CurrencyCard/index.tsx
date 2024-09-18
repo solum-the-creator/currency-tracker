@@ -1,14 +1,14 @@
 import DefaultIcon from '@assets/images/icons/ifix.svg';
 import { currencyIcons } from '@constants/currencyIcons';
-import { CurrenciesCode } from '@customTypes/currecny';
+import { CurrenciesCode } from '@customTypes/currency';
 import { calculateDisplayPrice } from '@utils/convertUtils';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectCurrencyByCode } from '@/store/slices/currenciesSlice';
 
-import styles from './CurrencyCard.module.scss';
 import { CurrencyModal } from './CurrencyModal';
+import styles from './index.module.scss';
 
 type CurrencyCardProps = {
   code: CurrenciesCode;
@@ -16,7 +16,7 @@ type CurrencyCardProps = {
   price: number;
 };
 
-export function CurrencyCard({ code, name, price }: CurrencyCardProps) {
+export const CurrencyCard: React.FC<CurrencyCardProps> = ({ code, name, price }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [convertCode, setConvertCode] = useState<CurrenciesCode>('USD');
 
@@ -62,4 +62,4 @@ export function CurrencyCard({ code, name, price }: CurrencyCardProps) {
       )}
     </div>
   );
-}
+};

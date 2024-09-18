@@ -1,3 +1,3 @@
-export function Timeline() {
+export const Timeline = () => {
   return <div>Timeline</div>;
-}
+};

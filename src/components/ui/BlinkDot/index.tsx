@@ -1,6 +1,6 @@
-import styles from './BlinkDot.module.scss';
+import styles from './index.module.scss';
 
-export function BlinkDot() {
+export const BlinkDot = () => {
   return (
     <div className={styles.blinking_container}>
       <div className={styles.blinking_dot}>
@@ -8,4 +8,4 @@ export function BlinkDot() {
       </div>
     </div>
   );
-}
+};

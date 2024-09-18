@@ -1,12 +1,4 @@
-export type CurrenciesCode =
-  | 'USD'
-  | 'BRL'
-  | 'EUR'
-  | 'CAD'
-  | 'CNY'
-  | 'JPY'
-  | 'BYN'
-  | 'RUB';
+export type CurrenciesCode = 'USD' | 'BRL' | 'EUR' | 'CAD' | 'CNY' | 'JPY' | 'BYN' | 'RUB';
 
 export type CurrencyInfo = {
   code: CurrenciesCode;

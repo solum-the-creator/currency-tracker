@@ -1,3 +1,3 @@
-export function BankCard() {
+export const BankCard = () => {
   return <div>BankCard</div>;
-}
+};

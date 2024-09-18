@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 
 import { selectLastUpdated } from '@/store/slices/currenciesSlice';
 
-import styles from './LastUpdate.module.scss';
+import styles from './index.module.scss';
 
-export function LastUpdate() {
+export const LastUpdate = () => {
   const lastUpdated = useSelector(selectLastUpdated);
 
   return (
@@ -17,4 +17,4 @@ export function LastUpdate() {
       </div>
     </section>
   );
-}
+};

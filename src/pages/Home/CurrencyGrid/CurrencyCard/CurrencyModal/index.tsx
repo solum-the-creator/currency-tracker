@@ -1,10 +1,10 @@
 import { Button } from '@components/ui/Button';
 import { CurrencySelect } from '@components/ui/CurrencySelect';
 import { currenciesCodes } from '@constants/currency';
-import { CurrenciesCode } from '@customTypes/currecny';
+import { CurrenciesCode } from '@customTypes/currency';
 import { useEffect, useRef } from 'react';
 
-import styles from './CurrencyModal.module.scss';
+import styles from './index.module.scss';
 
 type CurrencyModalProps = {
   code: CurrenciesCode;
@@ -15,14 +15,14 @@ type CurrencyModalProps = {
   onCurrencyChange?: (code: CurrenciesCode) => void;
 };
 
-export function CurrencyModal({
+export const CurrencyModal: React.FC<CurrencyModalProps> = ({
   price,
   code,
   name,
   convertCode,
   onClose = () => {},
   onCurrencyChange = () => {},
-}: CurrencyModalProps) {
+}) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -67,4 +67,4 @@ export function CurrencyModal({
       </div>
     </div>
   );
-}
+};
