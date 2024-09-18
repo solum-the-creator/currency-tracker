@@ -23,3 +23,7 @@ export type ExchangeRatesState = {
 export type ExchangeRatesResponse = {
   data: Record<CurrenciesCode, { code: string; value: number }>;
 };
+
+export type CurrenciesResponse = {
+  data: Record<CurrenciesCode, CurrencyInfo>;
+};
