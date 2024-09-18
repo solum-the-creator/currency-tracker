@@ -1,6 +1,6 @@
+import { CurrencyCard } from '@components/layout/CurrencyCard';
 import { EnrichedCurrency } from '@customTypes/currency';
 
-import { CurrencyCard } from './CurrencyCard';
 import styles from './index.module.scss';
 
 type CurrencyGridProps = {

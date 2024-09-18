@@ -1,4 +1,5 @@
 import DefaultIcon from '@assets/images/icons/ifix.svg';
+import { CurrencyModal } from '@components/layout/CurrencyModal';
 import { currencyIcons } from '@constants/currencyIcons';
 import { CurrenciesCode } from '@customTypes/currency';
 import { calculateDisplayPrice } from '@utils/convertUtils';
@@ -7,7 +8,6 @@ import { useSelector } from 'react-redux';
 
 import { selectCurrencyByCode } from '@/store/slices/currenciesSlice';
 
-import { CurrencyModal } from './CurrencyModal';
 import styles from './index.module.scss';
 
 type CurrencyCardProps = {

@@ -1,3 +1,4 @@
+import { CurrencyGrid } from '@components/layout/CurrencyGrid';
 import { isUpdateDayPassed } from '@utils/dateUtils';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -5,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrencies, selectCurrencies } from '@/store/slices/currenciesSlice';
 import { AppDispatch } from '@/store/store';
 
-import { CurrencyGrid } from './CurrencyGrid';
 import styles from './index.module.scss';
 
 export const Home = () => {
@@ -18,8 +18,12 @@ export const Home = () => {
     }
   }, [dispatch, lastUpdated]);
 
-  if (loading) return <p>Загрузка...</p>;
-  if (error) return <p>Ошибка: {error}</p>;
+  if (loading) {
+    return <p>Загрузка...</p>;
+  }
+  if (error) {
+    return <p>Ошибка: {error}</p>;
+  }
 
   return (
     <section className={styles.currencySection}>
