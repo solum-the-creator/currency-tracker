@@ -1,18 +1,14 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import currenciesReducer from './slices/currenciesSlice';
+import { rootReducer } from './rootReducer';
 
 const persistConfig = {
   key: 'root',
   storage,
   whiteList: ['currencies'],
 };
-
-const rootReducer = combineReducers({
-  currencies: currenciesReducer,
-});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

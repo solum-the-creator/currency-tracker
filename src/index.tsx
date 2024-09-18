@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { persistor, store } from './store/store';
+import { persistor, store } from './store';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);

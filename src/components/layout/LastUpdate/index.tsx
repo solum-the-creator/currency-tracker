@@ -2,7 +2,7 @@ import { BlinkDot } from '@components/ui/BlinkDot';
 import { formatTime } from '@utils/dateUtils';
 import { useSelector } from 'react-redux';
 
-import { selectLastUpdated } from '@/store/slices/currenciesSlice';
+import { selectLastUpdated } from '@/store/currencies-info/selectors';
 
 import styles from './index.module.scss';
 

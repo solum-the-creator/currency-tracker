@@ -3,8 +3,9 @@ import { isUpdateDayPassed } from '@utils/dateUtils';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchCurrencies, selectCurrencies } from '@/store/slices/currenciesSlice';
-import { AppDispatch } from '@/store/store';
+import { AppDispatch } from '@/store';
+import { selectCurrencies } from '@/store/currencies-info/selectors';
+import { fetchCurrencies } from '@/store/currencies-info/thunk';
 
 import styles from './index.module.scss';
 

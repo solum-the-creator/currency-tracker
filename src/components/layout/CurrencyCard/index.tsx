@@ -6,7 +6,7 @@ import { calculateDisplayPrice } from '@utils/convertUtils';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectCurrencyByCode } from '@/store/slices/currenciesSlice';
+import { selectCurrencyByCode } from '@/store/currencies-info/selectors';
 
 import styles from './index.module.scss';
 
