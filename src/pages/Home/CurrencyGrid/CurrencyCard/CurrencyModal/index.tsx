@@ -39,19 +39,8 @@ export function CurrencyModal({
     }
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  };
-
   return (
-    <div
-      className={styles.modal}
-      role="presentation"
-      onKeyDown={handleKeyDown}
-      onClick={handleOverlayClick}
-    >
+    <div className={styles.modal} role="presentation" onClick={handleOverlayClick}>
       <div
         className={styles.content}
         ref={modalRef}

@@ -14,9 +14,7 @@ export function Logo({ withText = false, width = 40, height = 40 }: LogoProps) {
     <Link to="/">
       <div className={styles.logo}>
         <LogoSvg width={width} height={height} className={styles.svg} />
-        {withText && (
-          <span className={styles.text}>Modsen Currency Tracker</span>
-        )}
+        {withText && <span className={styles.text}>Modsen Currency Tracker</span>}
       </div>
     </Link>
   );

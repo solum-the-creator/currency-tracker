@@ -11,10 +11,9 @@ export function Footer() {
           <div className={styles.description_wrapper}>
             <Logo withText={true} />
             <p className={styles.description}>
-              Since then, the company has grown organically to. Starsup is the
-              world&apos;s largest trading platform, with $12 billion worth of
-              currency trading and 500,000 tickets sold daily to tens of
-              thousands of traders worldwide.
+              Since then, the company has grown organically to. Starsup is the world&apos;s largest
+              trading platform, with $12 billion worth of currency trading and 500,000 tickets sold
+              daily to tens of thousands of traders worldwide.
             </p>
           </div>
           <div className={styles.link_rows}>
@@ -56,9 +55,7 @@ export function Footer() {
           </div>
         </div>
         <div className={styles.copyright}>
-          <p className={styles.copyright_text}>
-            Startsup © 2023-2024, All Rights Reserved
-          </p>
+          <p className={styles.copyright_text}>Startsup © 2023-2024, All Rights Reserved</p>
         </div>
       </div>
     </footer>

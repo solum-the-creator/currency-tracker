@@ -40,6 +40,7 @@
     "react/jsx-boolean-value": ["error", "always"],
     "react/jsx-props-no-spreading": "off",
     "no-param-reassign": ["error", { "props": false }],
+    "jsx-a11y/click-events-have-key-events": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "class-methods-use-this": "off",

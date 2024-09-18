@@ -28,12 +28,6 @@ export function CurrencyCard({ code, name, price }: CurrencyCardProps) {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Enter') {
-      openModal();
-    }
-  };
-
   const handleCurrencyChange = (currencyCode: CurrenciesCode) => {
     setConvertCode(currencyCode);
   };
@@ -49,7 +43,6 @@ export function CurrencyCard({ code, name, price }: CurrencyCardProps) {
         role="button"
         tabIndex={0}
         aria-label={`Convert currency ${name}`}
-        onKeyDown={handleKeyDown}
       >
         <div className={styles.currency_card_icon}>{icon}</div>
         <div className={styles.currency_card_content}>
