@@ -3,6 +3,7 @@ import { CurrencySelect } from '@components/ui/CurrencySelect';
 import { currenciesCodes } from '@constants/currency';
 import { CurrenciesCode } from '@customTypes/currency';
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 import styles from './index.module.scss';
 
@@ -23,6 +24,7 @@ export const CurrencyModal: React.FC<CurrencyModalProps> = ({
   onClose = () => {},
   onCurrencyChange = () => {},
 }) => {
+  const modalRoot = document.getElementById('modal-root');
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export const CurrencyModal: React.FC<CurrencyModalProps> = ({
     }
   };
 
-  return (
+  return createPortal(
     <div className={styles.modal} role="presentation" onClick={handleOverlayClick}>
       <div
         className={styles.content}
@@ -65,6 +67,7 @@ export const CurrencyModal: React.FC<CurrencyModalProps> = ({
         </div>
         <Button onClick={onClose}>Close</Button>
       </div>
-    </div>
+    </div>,
+    modalRoot,
   );
 };
