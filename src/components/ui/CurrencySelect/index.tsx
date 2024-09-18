@@ -19,9 +19,9 @@ export const CurrencySelect: React.FC<CurrencySelectProps> = ({
   };
   return (
     <div className={styles.select_wrapper}>
-      <label className={styles.select} htmlFor="currency_select">
+      <label className={styles.select} htmlFor="currencySelect">
         {label && <span className={styles.label}>{label}</span>}
-        <select id="currency_select" value={selectedCurrency} onChange={handleCurrencyChange}>
+        <select id="currencySelect" value={selectedCurrency} onChange={handleCurrencyChange}>
           {currencies.map((currency) => (
             <option key={currency} value={currency}>
               {currency}
