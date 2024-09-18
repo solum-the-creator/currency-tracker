@@ -1,0 +1,22 @@
+.linkRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  .linkTitle {
+    font-size: 1.6rem;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-normal);
+
+    .link {
+      color: var(--text-color-gray);
+    }
+  }
+}

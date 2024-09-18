@@ -1,9 +1,16 @@
 import { Logo } from '@components/ui/Logo';
-import { Link } from 'react-router-dom';
+import { footerLinks } from '@constants/paths';
 
 import styles from './index.module.scss';
+import { LinkRow } from './LinkRow';
 
 export const Footer = () => {
+  const [generalLinks, productLinks, communityLinks] = [
+    footerLinks.slice(0, 2),
+    footerLinks.slice(2, 4),
+    footerLinks.slice(4, 6),
+  ];
+
   return (
     <footer className={styles.footer}>
       <div className={styles.contentWrapper}>
@@ -17,41 +24,9 @@ export const Footer = () => {
             </p>
           </div>
           <div className={styles.linkRows}>
-            <div className={styles.linkRow}>
-              <h4 className={styles.linkTitle}>General</h4>
-              <div className={styles.links}>
-                <Link className={styles.link} to="market.com">
-                  Market
-                </Link>
-                <Link className={styles.link} to="market.com">
-                  Service
-                </Link>
-              </div>
-            </div>
-
-            <div className={styles.linkRow}>
-              <h4 className={styles.linkTitle}>Product</h4>
-              <div className={styles.links}>
-                <Link className={styles.link} to="market.com">
-                  Sparks
-                </Link>
-                <Link className={styles.link} to="market.com">
-                  Snaps
-                </Link>
-              </div>
-            </div>
-
-            <div className={styles.linkRow}>
-              <h4 className={styles.linkTitle}>Community</h4>
-              <div className={styles.links}>
-                <Link className={styles.link} to="market.com">
-                  Ideas
-                </Link>
-                <Link className={styles.link} to="market.com">
-                  Streams
-                </Link>
-              </div>
-            </div>
+            <LinkRow title="General" linkList={generalLinks} />
+            <LinkRow title="Product" linkList={productLinks} />
+            <LinkRow title="Community" linkList={communityLinks} />
           </div>
         </div>
         <div className={styles.copyright}>

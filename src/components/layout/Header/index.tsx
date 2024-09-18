@@ -1,6 +1,6 @@
 import { Logo } from '@components/ui/Logo';
 import { Toggle } from '@components/ui/Toggle';
-import { NAV_LINKS } from '@constants/paths';
+import { navLinks } from '@constants/paths';
 import { NavLink } from 'react-router-dom';
 
 import styles from './index.module.scss';
@@ -14,7 +14,7 @@ export const Header = () => {
         </div>
         <nav className={styles.nav}>
           <ul className={styles.navList}>
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.path} className={styles.navItem}>
                 <NavLink
                   to={link.path}

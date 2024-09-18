@@ -5,7 +5,7 @@ export enum UrlPaths {
   CONTACT = '/contact',
 }
 
-export const NAV_LINKS = [
+export const navLinks = [
   {
     name: 'Home',
     path: UrlPaths.HOME,
@@ -22,4 +22,13 @@ export const NAV_LINKS = [
     name: 'Contact',
     path: UrlPaths.CONTACT,
   },
+];
+
+export const footerLinks: Array<{ to: string; label: string }> = [
+  { label: 'Market', to: 'market.com' },
+  { label: 'Service', to: 'service.com' },
+  { label: 'Sparks', to: 'sparks.com' },
+  { label: 'Snaps', to: 'snaps.com' },
+  { label: 'Ideas', to: 'ideas.com' },
+  { label: 'Streams', to: 'streams.com' },
 ];
