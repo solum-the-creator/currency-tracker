@@ -1,2 +1,7 @@
-export const BASE_URL = 'https://api.currencyapi.com/v3';
-export const LATEST_RATES_ENDPOINT = `${BASE_URL}/latest`;
+type ApiEndpoint = 'latestRates' | 'historicalRates' | 'currencies';
+
+export const apiEndpoints: Record<ApiEndpoint, string> = {
+  latestRates: 'latest',
+  historicalRates: 'history',
+  currencies: 'currencies',
+};

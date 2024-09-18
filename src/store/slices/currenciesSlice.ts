@@ -1,4 +1,4 @@
-import { LATEST_RATES_ENDPOINT } from '@constants/api';
+import { apiEndpoints } from '@constants/api';
 import { currenciesCodes, currencyDetails } from '@constants/currency';
 import {
   CurrenciesCode,
@@ -7,6 +7,7 @@ import {
   ExchangeRatesState,
 } from '@customTypes/currency';
 import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
+import { getApiUrl } from '@utils/urlUtils';
 import axios from 'axios';
 
 import type { RootState } from '../store';
@@ -21,7 +22,7 @@ const initialState: ExchangeRatesState = {
 };
 
 export const fetchCurrencies = createAsyncThunk('currencies/fetchCurrencies', async () => {
-  const response = await axios.get<ExchangeRatesResponse>(LATEST_RATES_ENDPOINT, {
+  const response = await axios.get<ExchangeRatesResponse>(getApiUrl(apiEndpoints.latestRates), {
     params: {
       apikey: API_KEY,
       currencies: currenciesCodes.join(','),
