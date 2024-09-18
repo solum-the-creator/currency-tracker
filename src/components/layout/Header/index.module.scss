@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
 
-  .content_wrapper {
+  .contentWrapper {
     width: 100%;
     max-width: var(--screen-lg);
     display: flex;
@@ -16,7 +16,7 @@
       display: flex;
       justify-content: center;
 
-      .nav_list {
+      .navList {
         width: 100%;
         max-width: var(--width-xxlarge);
         display: flex;
@@ -24,7 +24,7 @@
         align-items: center;
         gap: var(--spacing-md);
 
-        .nav_item {
+        .navItem {
           font-size: 1.2rem;
           font-weight: var(--font-weight-light);
 
@@ -35,7 +35,7 @@
       }
     }
 
-    .theme_control {
+    .themeControl {
       display: flex;
       align-items: center;
     }

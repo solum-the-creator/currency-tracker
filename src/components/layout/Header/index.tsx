@@ -8,14 +8,14 @@ import styles from './index.module.scss';
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.content_wrapper}>
+      <div className={styles.contentWrapper}>
         <div className={styles.logo}>
           <Logo />
         </div>
         <nav className={styles.nav}>
-          <ul className={styles.nav_list}>
+          <ul className={styles.navList}>
             {NAV_LINKS.map((link) => (
-              <li key={link.path} className={styles.nav_item}>
+              <li key={link.path} className={styles.navItem}>
                 <NavLink
                   to={link.path}
                   className={({ isActive }) => (isActive ? styles.active : '')}
@@ -26,7 +26,7 @@ export const Header = () => {
             ))}
           </ul>
         </nav>
-        <div className={styles.theme_control}>
+        <div className={styles.themeControl}>
           <Toggle />
         </div>
       </div>

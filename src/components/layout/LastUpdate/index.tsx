@@ -10,10 +10,10 @@ export const LastUpdate = () => {
   const lastUpdated = useSelector(selectLastUpdated);
 
   return (
-    <section className={styles.last_update_section}>
-      <div className={styles.last_update}>
+    <section className={styles.lastUpdateSection}>
+      <div className={styles.lastUpdate}>
         <BlinkDot />
-        <p className={styles.last_update_text}>Last updated at {formatTime(lastUpdated)}</p>
+        <p className={styles.lastUpdateText}>Last updated at {formatTime(lastUpdated)}</p>
       </div>
     </section>
   );

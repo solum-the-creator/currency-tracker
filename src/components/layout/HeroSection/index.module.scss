@@ -1,6 +1,6 @@
 @import '@/styles/mixins.scss';
 
-.hero_section {
+.heroSection {
   width: 100%;
   padding: 2rem 2rem 4rem;
   display: flex;
@@ -14,7 +14,7 @@
     display: flex;
     justify-content: flex-start;
 
-    .content_wrapper {
+    .contentWrapper {
       display: flex;
 
       gap: 1rem;
@@ -39,7 +39,7 @@
           }
         }
 
-        .description_wrapper {
+        .descriptionWrapper {
           display: flex;
           justify-content: flex-end;
 

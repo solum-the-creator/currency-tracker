@@ -60,7 +60,7 @@ export const CurrencyModal: React.FC<CurrencyModalProps> = ({
             onCurrencyChange={onCurrencyChange}
           />
           <p className={styles.price}>
-            Price: <span className={styles.price_value}>{price}</span>
+            Price: <span className={styles.priceValue}>{price}</span>
           </p>
         </div>
         <Button onClick={onClose}>Close</Button>

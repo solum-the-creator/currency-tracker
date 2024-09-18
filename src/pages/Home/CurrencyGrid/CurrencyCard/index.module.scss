@@ -1,4 +1,4 @@
-.currency_card {
+.currencyCard {
   width: 100%;
   max-width: 32.5rem;
   padding: 2rem;
@@ -11,7 +11,7 @@
 
   cursor: pointer;
 
-  .currency_card_icon {
+  .currencyCardIcon {
     width: 5rem;
     min-width: 5rem;
 
@@ -21,17 +21,17 @@
     }
   }
 
-  .currency_card_content {
+  .currencyCardContent {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    .currency_name {
+    .currencyName {
       font-size: 2rem;
       color: var(--text-color-secondary);
     }
 
-    .currency_value {
+    .currencyValue {
       font-size: 2rem;
       font-weight: var(--font-weight-light);
       color: var(--text-color-light-gray);

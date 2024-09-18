@@ -22,7 +22,7 @@ export const Home = () => {
   if (error) return <p>Ошибка: {error}</p>;
 
   return (
-    <section className={styles.currency_section}>
+    <section className={styles.currencySection}>
       <div className={styles.content}>
         <CurrencyGrid title="Quotes" currencyList={data} />
       </div>

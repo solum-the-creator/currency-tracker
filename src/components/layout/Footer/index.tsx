@@ -6,9 +6,9 @@ import styles from './index.module.scss';
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className={styles.content_wrapper}>
-        <div className={styles.top_block}>
-          <div className={styles.description_wrapper}>
+      <div className={styles.contentWrapper}>
+        <div className={styles.topBlock}>
+          <div className={styles.descriptionWrapper}>
             <Logo withText={true} />
             <p className={styles.description}>
               Since then, the company has grown organically to. Starsup is the world&apos;s largest
@@ -16,9 +16,9 @@ export const Footer = () => {
               daily to tens of thousands of traders worldwide.
             </p>
           </div>
-          <div className={styles.link_rows}>
-            <div className={styles.link_row}>
-              <h4 className={styles.link_title}>General</h4>
+          <div className={styles.linkRows}>
+            <div className={styles.linkRow}>
+              <h4 className={styles.linkTitle}>General</h4>
               <div className={styles.links}>
                 <Link className={styles.link} to="market.com">
                   Market
@@ -29,8 +29,8 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className={styles.link_row}>
-              <h4 className={styles.link_title}>Product</h4>
+            <div className={styles.linkRow}>
+              <h4 className={styles.linkTitle}>Product</h4>
               <div className={styles.links}>
                 <Link className={styles.link} to="market.com">
                   Sparks
@@ -41,8 +41,8 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className={styles.link_row}>
-              <h4 className={styles.link_title}>Community</h4>
+            <div className={styles.linkRow}>
+              <h4 className={styles.linkTitle}>Community</h4>
               <div className={styles.links}>
                 <Link className={styles.link} to="market.com">
                   Ideas
@@ -55,7 +55,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className={styles.copyright}>
-          <p className={styles.copyright_text}>Startsup © 2023-2024, All Rights Reserved</p>
+          <p className={styles.copyrightText}>Startsup © 2023-2024, All Rights Reserved</p>
         </div>
       </div>
     </footer>

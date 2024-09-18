@@ -38,16 +38,16 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({ code, name, price })
   return (
     <div>
       <div
-        className={styles.currency_card}
+        className={styles.currencyCard}
         onClick={openModal}
         role="button"
         tabIndex={0}
         aria-label={`Convert currency ${name}`}
       >
-        <div className={styles.currency_card_icon}>{icon}</div>
-        <div className={styles.currency_card_content}>
-          <p className={styles.currency_name}>{name}</p>
-          <p className={styles.currency_value}>{fullPrice}</p>
+        <div className={styles.currencyCardIcon}>{icon}</div>
+        <div className={styles.currencyCardContent}>
+          <p className={styles.currencyName}>{name}</p>
+          <p className={styles.currencyValue}>{fullPrice}</p>
         </div>
       </div>
       {isModalOpen && (

@@ -1,11 +1,11 @@
-.blinking_container {
+.blinkingContainer {
   width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .blinking_dot {
+  .blinkingDot {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@
     background-color: #02461f;
     position: relative;
 
-    .inner_circle {
+    .innerCircle {
       position: relative;
       z-index: var(--z-index-low);
       width: 1rem;

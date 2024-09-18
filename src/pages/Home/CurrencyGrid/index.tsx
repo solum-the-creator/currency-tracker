@@ -10,9 +10,9 @@ type CurrencyGridProps = {
 
 export const CurrencyGrid: React.FC<CurrencyGridProps> = ({ title, currencyList }) => {
   return (
-    <div className={styles.currency_block}>
+    <div className={styles.currencyBlock}>
       <div className={styles.title}>
-        <h2 className={styles.title_text}>{title}</h2>
+        <h2 className={styles.titleText}>{title}</h2>
         <div className={styles.line} />
       </div>
       <div className={styles.empty} />

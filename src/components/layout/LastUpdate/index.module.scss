@@ -1,15 +1,15 @@
-.last_update_section {
+.lastUpdateSection {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 3.5rem;
 
-  .last_update {
+  .lastUpdate {
     display: flex;
     align-items: center;
     gap: 1rem;
 
-    .last_update_text {
+    .lastUpdateText {
       font-size: var(--font-size-xxl);
       font-weight: var(--font-weight-light);
       color: var(--text-color-secondary);
