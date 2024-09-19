@@ -1,3 +1,5 @@
+import { format, subDays } from 'date-fns';
+
 export const isUpdateDayPassed = (lastUpdate: number) => {
   if (!lastUpdate) {
     return true;
@@ -20,4 +22,8 @@ export const formatTime = (timestamp: number | null): string => {
   });
 
   return formatter.format(date);
+};
+
+export const getFormattedDate = (daysAgo: number): string => {
+  return format(subDays(new Date(), daysAgo), 'yyyy-MM-dd');
 };
