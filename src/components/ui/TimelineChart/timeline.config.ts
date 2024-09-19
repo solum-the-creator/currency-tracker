@@ -62,6 +62,12 @@ const options: ChartOptions<'bar'> = {
       grid: {
         color: colors.grey,
       },
+      ticks: {
+        color: '#CDCDCD',
+        font: {
+          size: 12,
+        },
+      },
     },
   },
   plugins: {
@@ -238,6 +244,23 @@ const axisArrowPlugin = {
   },
 };
 
-const plugins = [candlestick, crosshair, axisArrowPlugin];
+const dynamicBoundsPlugin: Plugin = {
+  id: 'dynamicBounds',
+  afterDatasetsDraw(chart: any): void {
+    const dataPoints: DataChart[] = chart.data.datasets[0].data;
+
+    if (dataPoints.length > 0) {
+      const min = Math.min(...dataPoints.map((d) => d.l), ...dataPoints.map((d) => d.c));
+      const max = Math.max(...dataPoints.map((d) => d.h));
+
+      chart.options.scales.y.min = min - 5;
+      chart.options.scales.y.max = max + 5;
+
+      chart.update();
+    }
+  },
+};
+
+const plugins = [dynamicBoundsPlugin, candlestick, crosshair, axisArrowPlugin];
 
 export const TimelineConfig = { data, options, plugins };
