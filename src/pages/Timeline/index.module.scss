@@ -1,5 +1,6 @@
 .timelineSection {
   width: 100%;
+  padding: 0 2rem 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,6 +16,10 @@
     .dateInputs {
       display: flex;
       gap: 2rem;
+    }
+
+    .description {
+      color: var(--text-color-secondary);
     }
   }
 }

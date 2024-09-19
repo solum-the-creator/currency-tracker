@@ -185,6 +185,9 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
               label="End date:"
             />
           </div>
+          <p className={styles.description}>
+            <i>Click on any candle in the chart to view and edit its details.</i>
+          </p>
           {filteredData.length > 0 && (
             <TimelineChart onPointClick={this.handlePointClick} marketData={filteredData} />
           )}
