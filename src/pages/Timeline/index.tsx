@@ -158,43 +158,49 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
 
     return (
       <section className={styles.timelineSection}>
-        <h1>Currency Exchange Rate Timeline</h1>
-        <CurrencySelect
-          currencies={timelineCurenciesCodes}
-          selectedCurrency={selectedCurrency}
-          onCurrencyChange={this.handleCurrencyChange}
-        />
-        <DateInput
-          name="startDate"
-          value={startDate}
-          onChange={(value) => this.handleDateChange('startDate', value)}
-          minDate={minDate}
-          maxDate={maxDate}
-          label="Start date"
-        />
-        <DateInput
-          name="endDate"
-          value={endDate}
-          onChange={(value) => this.handleDateChange('endDate', value)}
-          minDate={minDate}
-          maxDate={maxDate}
-          label="End date"
-        />
-        {filteredData.length > 0 && (
-          <TimelineChart onPointClick={this.handlePointClick} marketData={filteredData} />
-        )}
+        <div className={styles.content}>
+          <div className={styles.currencySelect}>
+            <CurrencySelect
+              label="Choose currency:"
+              currencies={timelineCurenciesCodes}
+              selectedCurrency={selectedCurrency}
+              onCurrencyChange={this.handleCurrencyChange}
+            />
+          </div>
+          <div className={styles.dateInputs}>
+            <DateInput
+              name="startDate"
+              value={startDate}
+              onChange={(value) => this.handleDateChange('startDate', value)}
+              minDate={minDate}
+              maxDate={maxDate}
+              label="Start date:"
+            />
+            <DateInput
+              name="endDate"
+              value={endDate}
+              onChange={(value) => this.handleDateChange('endDate', value)}
+              minDate={minDate}
+              maxDate={maxDate}
+              label="End date:"
+            />
+          </div>
+          {filteredData.length > 0 && (
+            <TimelineChart onPointClick={this.handlePointClick} marketData={filteredData} />
+          )}
 
-        {selectedDataPoint && (
-          <ChartModal
-            closePrice={selectedDataPoint.rate_close}
-            openPrice={selectedDataPoint.rate_open}
-            highPrice={selectedDataPoint.rate_high}
-            lowPrice={selectedDataPoint.rate_low}
-            date={selectedDataPoint.time_close}
-            onClose={this.handleCloseModal}
-            onSave={this.handleSaveModal}
-          />
-        )}
+          {selectedDataPoint && (
+            <ChartModal
+              closePrice={selectedDataPoint.rate_close}
+              openPrice={selectedDataPoint.rate_open}
+              highPrice={selectedDataPoint.rate_high}
+              lowPrice={selectedDataPoint.rate_low}
+              date={selectedDataPoint.time_close}
+              onClose={this.handleCloseModal}
+              onSave={this.handleSaveModal}
+            />
+          )}
+        </div>
       </section>
     );
   }

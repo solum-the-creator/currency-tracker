@@ -2,6 +2,7 @@ import { Modal } from '@components/layout/Modal';
 import { Button } from '@components/ui/Button';
 import { Input } from '@components/ui/Input';
 import { MarketData } from '@customTypes/market';
+import { formatDate } from '@utils/dateUtils';
 import React from 'react';
 
 import styles from './index.module.scss';
@@ -44,6 +45,10 @@ export class ChartModal extends React.Component<ChartModalProps, ChartModalState
     const { openPrice, closePrice, highPrice, lowPrice } = this.state;
     const { onSave, onClose } = this.props;
 
+    if (openPrice < 0 || closePrice < 0 || highPrice < 0 || lowPrice < 0) {
+      return;
+    }
+
     onSave({
       rate_open: openPrice,
       rate_close: closePrice,
@@ -61,39 +66,36 @@ export class ChartModal extends React.Component<ChartModalProps, ChartModalState
     return (
       <Modal onClose={onClose}>
         <h3 className={styles.title}>Change currency price</h3>
-        <div>
-          <p className={styles.date}>{date}</p>
-          <div className={styles.price}>
-            Open:
+        <div className={styles.content}>
+          <p className={styles.date}>Date: {formatDate(date)}</p>
+          <div className={styles.prices}>
             <Input
               name="open_price"
+              label="Open price:"
               value={openPrice}
               onChange={(value) => this.handleChange('openPrice', value)}
               type="number"
             />
-          </div>
-          <div className={styles.price}>
-            Close:
+
             <Input
               name="close_price"
+              label="Close price:"
               value={closePrice}
               onChange={(value) => this.handleChange('closePrice', value)}
               type="number"
             />
-          </div>
-          <div className={styles.price}>
-            High:
+
             <Input
               name="high_price"
+              label="High price:"
               value={highPrice}
               onChange={(value) => this.handleChange('highPrice', value)}
               type="number"
             />
-          </div>
-          <div className={styles.price}>
-            Low:
+
             <Input
               name="low_price"
+              label="Low price:"
               value={lowPrice}
               onChange={(value) => this.handleChange('lowPrice', value)}
               type="number"
@@ -104,7 +106,7 @@ export class ChartModal extends React.Component<ChartModalProps, ChartModalState
           <Button type="button" onClick={onClose}>
             Cancel
           </Button>
-          <Button type="button" onClick={this.handleSave}>
+          <Button type="button" onClick={this.handleSave} className={styles.saveButton}>
             Save
           </Button>
         </div>

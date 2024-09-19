@@ -9,6 +9,7 @@ type InputProps = {
   onChange: (value: string) => void;
   label?: string;
   type?: 'number' | 'text';
+  min?: number;
 };
 
 type InputState = {
@@ -33,7 +34,7 @@ export class Input extends React.Component<InputProps, InputState> {
   };
 
   render(): React.ReactNode {
-    const { label, name, placeholder, type = 'text' } = this.props;
+    const { label, name, placeholder, min = 0, type = 'text' } = this.props;
     const { inputValue } = this.state;
 
     return (
@@ -51,6 +52,7 @@ export class Input extends React.Component<InputProps, InputState> {
           name={name}
           onChange={this.handleChange}
           className={styles.input}
+          min={min}
         />
       </div>
     );

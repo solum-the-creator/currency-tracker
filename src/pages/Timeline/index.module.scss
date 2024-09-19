@@ -4,4 +4,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .content {
+    width: 100%;
+    max-width: var(--screen-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .dateInputs {
+      display: flex;
+      gap: 2rem;
+    }
+  }
 }

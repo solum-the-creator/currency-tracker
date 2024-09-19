@@ -11,14 +11,34 @@ type DateInputProps = {
   maxDate?: string;
 };
 
-export class DateInput extends React.Component<DateInputProps> {
+type DateInputState = {
+  value: string;
+};
+
+export class DateInput extends React.Component<DateInputProps, DateInputState> {
+  constructor(props: DateInputProps) {
+    super(props);
+
+    this.state = {
+      value: props.value,
+    };
+  }
+
   handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { onChange } = this.props;
-    onChange(event.target.value);
+    const { value } = event.target;
+    const { onChange, value: currentValue, maxDate, minDate } = this.props;
+
+    if (value === '' || value === null || value > maxDate || value < minDate) {
+      this.setState({ value: currentValue });
+    } else {
+      this.setState({ value });
+      onChange(value);
+    }
   };
 
   render(): React.ReactNode {
-    const { label, value, name, minDate, maxDate } = this.props;
+    const { label, name, minDate, maxDate } = this.props;
+    const { value } = this.state;
 
     return (
       <div className={styles.dateInputWrapper}>

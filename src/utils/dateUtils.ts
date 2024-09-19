@@ -24,6 +24,10 @@ export const formatTime = (timestamp: number | null): string => {
   return formatter.format(date);
 };
 
-export const getFormattedDate = (daysAgo: number): string => {
+export const getFormattedDate = (daysAgo?: number): string => {
   return format(subDays(new Date(), daysAgo), 'yyyy-MM-dd');
+};
+
+export const formatDate = (date: string): string => {
+  return format(new Date(date), 'dd.MM.yyyy');
 };
