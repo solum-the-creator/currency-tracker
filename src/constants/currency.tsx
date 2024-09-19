@@ -5,8 +5,10 @@ export const currenciesCodes: CurrenciesCode[] = [
   'BRL',
   'EUR',
   'CAD',
-  'CNY',
+  'BTC',
   'JPY',
-  'BYN',
-  'RUB',
+  'ETH',
+  'BNB',
 ];
+
+export const timelineCurenciesCodes: CurrenciesCode[] = ['BTC', 'ETH', 'BNB'];

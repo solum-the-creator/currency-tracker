@@ -57,7 +57,7 @@ export class TimelineChart extends React.Component<TimelineChartProps, TimelineC
           data={this.getConfig()}
           options={TimelineConfig.options}
           plugins={TimelineConfig.plugins}
-          height={500}
+          height={600}
         />
       </div>
     );

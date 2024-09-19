@@ -6,7 +6,7 @@ export const fetchMarketData = createAsyncThunk<MarketData[], FetchMarketDataPar
   'marketData/fetchMarketData',
   async ({ currencyCode, startDate, endDate }) => {
     const response = await axios.get<MarketDataResponse[]>(
-      `${process.env.COIN_API_BASE_URL}/exchangerate/USD/${currencyCode}/history`,
+      `${process.env.COIN_API_BASE_URL}/exchangerate/${currencyCode}/USD/history`,
       {
         params: {
           apikey: process.env.COIN_API_KEY,

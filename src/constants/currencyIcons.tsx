@@ -1,10 +1,10 @@
+import BTCIcon from '@assets/images/icons/bitcoin.svg';
+import BNBIcon from '@assets/images/icons/bnb.svg';
 import BRLIcon from '@assets/images/icons/brl.svg';
-import BYNIcon from '@assets/images/icons/byn.svg';
 import CanadianDollarIcon from '@assets/images/icons/canadian-dollar.svg';
 import DollarIcon from '@assets/images/icons/dollar.svg';
+import ETHIcon from '@assets/images/icons/eth.svg';
 import EuroIcon from '@assets/images/icons/euro.svg';
-import RUBIcon from '@assets/images/icons/rub.svg';
-import YuanIcon from '@assets/images/icons/won.svg';
 import YenIcon from '@assets/images/icons/yen.svg';
 import { CurrenciesCode } from '@customTypes/currency';
 
@@ -15,8 +15,8 @@ export const currencyIcons: Record<CurrenciesCode, React.ReactElement<SVGIcon>> 
   BRL: <BRLIcon />,
   EUR: <EuroIcon />,
   CAD: <CanadianDollarIcon />,
-  CNY: <YuanIcon />,
+  BTC: <BTCIcon />,
   JPY: <YenIcon />,
-  BYN: <BYNIcon />,
-  RUB: <RUBIcon />,
+  ETH: <ETHIcon />,
+  BNB: <BNBIcon />,
 };
