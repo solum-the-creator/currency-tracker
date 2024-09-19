@@ -46,7 +46,10 @@
     "react/function-component-definition": ["error", { "namedComponents": "arrow-function" }],
     "class-methods-use-this": "off",
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "react/prefer-stateless-function": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "no-underscore-dangle": "off"
   },
   "settings": {
     "import/resolver": {

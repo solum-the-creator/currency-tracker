@@ -3,7 +3,7 @@ import { UrlPaths } from '@constants/paths';
 import { BankCard } from '@pages/BankCard';
 import { Contact } from '@pages/Contact';
 import { Home } from '@pages/Home';
-import { Timeline } from '@pages/Timeline';
+import Timeline from '@pages/Timeline';
 import { Route, Routes } from 'react-router-dom';
 
 export const AppRoutes = () => {
