@@ -1,3 +1,4 @@
+import { ChartModal } from '@components/layout/ChartModal';
 import { CurrencySelect } from '@components/ui/CurrencySelect';
 import { DateInput } from '@components/ui/DateInput';
 import { TimelineChart } from '@components/ui/TimelineChart';
@@ -33,6 +34,7 @@ type TimelineState = {
   endDate: string;
   filteredData: MarketData[];
   initialData: MarketData[];
+  selectedDataPoint?: MarketData;
 };
 
 const minDate = getFormattedDate(30);
@@ -48,6 +50,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
       endDate: maxDate,
       filteredData: [],
       initialData: [],
+      selectedDataPoint: undefined,
     };
   }
 
@@ -126,8 +129,32 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     );
   };
 
+  handlePointClick = (data: MarketData) => {
+    this.setState({ selectedDataPoint: data });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ selectedDataPoint: undefined });
+  };
+
+  handleSaveModal = (data: Omit<MarketData, 'time_open' | 'time_close'>) => {
+    const { selectedDataPoint, initialData } = this.state;
+
+    if (!selectedDataPoint) {
+      return;
+    }
+
+    const updatedInitialData = initialData.map((dataPoint) =>
+      dataPoint.time_close === selectedDataPoint.time_close ? { ...dataPoint, ...data } : dataPoint,
+    );
+
+    this.setState({ initialData: updatedInitialData }, () => {
+      this.filterData();
+    });
+  };
+
   render(): ReactNode {
-    const { selectedCurrency, startDate, endDate, filteredData } = this.state;
+    const { selectedCurrency, startDate, endDate, filteredData, selectedDataPoint } = this.state;
 
     return (
       <section className={styles.timelineSection}>
@@ -153,7 +180,21 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
           maxDate={maxDate}
           label="End date"
         />
-        {filteredData.length > 0 && <TimelineChart marketData={filteredData} />}
+        {filteredData.length > 0 && (
+          <TimelineChart onPointClick={this.handlePointClick} marketData={filteredData} />
+        )}
+
+        {selectedDataPoint && (
+          <ChartModal
+            closePrice={selectedDataPoint.rate_close}
+            openPrice={selectedDataPoint.rate_open}
+            highPrice={selectedDataPoint.rate_high}
+            lowPrice={selectedDataPoint.rate_low}
+            date={selectedDataPoint.time_close}
+            onClose={this.handleCloseModal}
+            onSave={this.handleSaveModal}
+          />
+        )}
       </section>
     );
   }

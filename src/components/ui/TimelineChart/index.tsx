@@ -11,6 +11,7 @@ import { TimelineConfig } from './timeline.config';
 
 type TimelineChartProps = {
   marketData: MarketData[];
+  onPointClick?: (data: MarketData) => void;
 };
 
 export type TimelineChartState = {
@@ -36,6 +37,31 @@ export class TimelineChart extends React.Component<TimelineChartProps, TimelineC
     };
   }
 
+  handleClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    const { onPointClick, marketData } = this.props;
+    const chart = ChartJS.getChart(event.currentTarget);
+
+    if (chart) {
+      const elements = chart.getElementsAtEventForMode(
+        event.nativeEvent,
+        'nearest',
+        { intersect: true },
+        true,
+      );
+
+      if (elements.length) {
+        const { index } = elements[0] as { index: number };
+
+        if (index !== undefined && marketData[index]) {
+          const data = marketData[index];
+          if (onPointClick) {
+            onPointClick(data);
+          }
+        }
+      }
+    }
+  };
+
   formatDataForChart(): DataChart[] {
     const { marketData } = this.props;
 
@@ -58,6 +84,7 @@ export class TimelineChart extends React.Component<TimelineChartProps, TimelineC
           options={TimelineConfig.options}
           plugins={TimelineConfig.plugins}
           height={600}
+          onClick={this.handleClick}
         />
       </div>
     );

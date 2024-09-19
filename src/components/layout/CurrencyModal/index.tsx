@@ -1,9 +1,8 @@
+import { Modal } from '@components/layout/Modal';
 import { Button } from '@components/ui/Button';
 import { CurrencySelect } from '@components/ui/CurrencySelect';
 import { currenciesCodes } from '@constants/currency';
 import { CurrenciesCode } from '@customTypes/currency';
-import { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
 
 import styles from './index.module.scss';
 
@@ -24,50 +23,24 @@ export const CurrencyModal: React.FC<CurrencyModalProps> = ({
   onClose = () => {},
   onCurrencyChange = () => {},
 }) => {
-  const modalRoot = document.getElementById('modal-root');
-  const modalRef = useRef<HTMLDivElement>(null);
+  return (
+    <Modal onClose={onClose}>
+      <h3 className={styles.title}>
+        {name} - {code}
+      </h3>
 
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, []);
-
-  const handleOverlayClick = (event: React.MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      onClose();
-    }
-  };
-
-  return createPortal(
-    <div className={styles.modal} role="presentation" onClick={handleOverlayClick}>
-      <div
-        className={styles.content}
-        ref={modalRef}
-        role="dialog"
-        aria-labelledby="modal-title"
-        aria-modal="true"
-      >
-        <h3 id="modal-title" className={styles.title}>
-          {name} - {code}
-        </h3>
-
-        <div className={styles.info}>
-          <CurrencySelect
-            label="Convert to:"
-            currencies={currenciesCodes}
-            selectedCurrency={convertCode}
-            onCurrencyChange={onCurrencyChange}
-          />
-          <p className={styles.price}>
-            Price: <span className={styles.priceValue}>{price}</span>
-          </p>
-        </div>
-        <Button onClick={onClose}>Close</Button>
+      <div className={styles.info}>
+        <CurrencySelect
+          label="Convert to:"
+          currencies={currenciesCodes}
+          selectedCurrency={convertCode}
+          onCurrencyChange={onCurrencyChange}
+        />
+        <p className={styles.price}>
+          Price: <span className={styles.priceValue}>{price}</span>
+        </p>
       </div>
-    </div>,
-    modalRoot,
+      <Button onClick={onClose}>Close</Button>
+    </Modal>
   );
 };
