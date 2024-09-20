@@ -12,8 +12,6 @@ export const selectCurrencyByCode = (code: CurrenciesCode) =>
     (state: RootState) => state.currencies.data,
     (currencies) => {
       const selectedCurrency = currencies.find((currency) => currency.code === code);
-      return selectedCurrency
-        ? { price: selectedCurrency.price, symbol: selectedCurrency.symbol }
-        : null;
+      return selectedCurrency;
     },
   );

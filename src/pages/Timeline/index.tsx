@@ -1,4 +1,5 @@
 import { ChartModal } from '@components/layout/ChartModal';
+import CurrencyData from '@components/layout/CurrencyData';
 import { CurrencySelect } from '@components/ui/CurrencySelect';
 import { DateInput } from '@components/ui/DateInput';
 import { TimelineChart } from '@components/ui/TimelineChart';
@@ -166,6 +167,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
               selectedCurrency={selectedCurrency}
               onCurrencyChange={this.handleCurrencyChange}
             />
+            <CurrencyData code={selectedCurrency} />
           </div>
           <div className={styles.dateInputs}>
             <DateInput
