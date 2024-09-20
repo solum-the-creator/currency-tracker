@@ -250,8 +250,13 @@ const dynamicBoundsPlugin: Plugin = {
     const dataPoints: DataChart[] = chart.data.datasets[0].data;
 
     if (dataPoints.length > 0) {
-      const min = Math.min(...dataPoints.map((d) => d.l), ...dataPoints.map((d) => d.c));
-      const max = Math.max(...dataPoints.map((d) => d.h));
+      const { min, max } = dataPoints.reduce(
+        (acc, dataPoint) => ({
+          min: Math.min(acc.min, dataPoint.l, dataPoint.c, dataPoint.h, dataPoint.o),
+          max: Math.max(acc.max, dataPoint.l, dataPoint.c, dataPoint.h, dataPoint.o),
+        }),
+        { min: Infinity, max: -Infinity },
+      );
 
       chart.options.scales.y.min = min - 5;
       chart.options.scales.y.max = max + 5;

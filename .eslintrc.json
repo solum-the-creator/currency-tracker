@@ -26,7 +26,6 @@
     "no-console": "warn",
     "react/react-in-jsx-scope": "off",
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -49,7 +48,8 @@
     "simple-import-sort/exports": "error",
     "react/prefer-stateless-function": "off",
     "@typescript-eslint/no-shadow": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "import/no-extraneous-dependencies": "off"
   },
   "settings": {
     "import/resolver": {
