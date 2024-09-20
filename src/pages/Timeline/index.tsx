@@ -1,5 +1,6 @@
 import { ChartModal } from '@components/layout/ChartModal';
 import CurrencyData from '@components/layout/CurrencyData';
+import { Button } from '@components/ui/Button';
 import { CurrencySelect } from '@components/ui/CurrencySelect';
 import { DateInput } from '@components/ui/DateInput';
 import { TimelineChart } from '@components/ui/TimelineChart';
@@ -33,6 +34,7 @@ type TimelineState = {
   selectedCurrency: CurrenciesCode;
   startDate: string;
   endDate: string;
+  originalData: MarketData[];
   filteredData: MarketData[];
   initialData: MarketData[];
   selectedDataPoint?: MarketData;
@@ -51,6 +53,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
       endDate: maxDate,
       filteredData: [],
       initialData: [],
+      originalData: [],
       selectedDataPoint: undefined,
     };
   }
@@ -68,7 +71,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     }
 
     if (prevProps.data !== data) {
-      this.setState({ initialData: data }, this.filterData);
+      this.setState({ initialData: data, originalData: data }, this.filterData);
     }
 
     if (prevState.startDate !== startDate || prevState.endDate !== endDate) {
@@ -154,6 +157,13 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     });
   };
 
+  handleReset = () => {
+    this.setState((prevState) => ({
+      filteredData: prevState.originalData,
+      selectedDataPoint: undefined,
+    }));
+  };
+
   render(): ReactNode {
     const { selectedCurrency, startDate, endDate, filteredData, selectedDataPoint } = this.state;
 
@@ -190,6 +200,11 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
           <p className={styles.description}>
             <i>Click on any candle in the chart to view and edit its details.</i>
           </p>
+          <div className={styles.reset}>
+            <Button className={styles.resetButton} onClick={this.handleReset}>
+              Reset Data
+            </Button>
+          </div>
           {filteredData.length > 0 && (
             <TimelineChart onPointClick={this.handlePointClick} marketData={filteredData} />
           )}

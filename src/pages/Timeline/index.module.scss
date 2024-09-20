@@ -28,4 +28,13 @@
     flex-direction: column;
     gap: 1rem;
   }
+
+  .reset {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  .resetButton {
+    background-color: var(--secondary-color);
+  }
 }
