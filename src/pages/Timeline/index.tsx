@@ -154,11 +154,14 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
   };
 
   handleReset = () => {
-    this.setState((prevState) => ({
-      filteredData: prevState.originalData,
-      selectedDataPoint: undefined,
-      isDataModified: false,
-    }));
+    this.setState(
+      (prevState) => ({
+        initialData: prevState.originalData,
+        selectedDataPoint: undefined,
+        isDataModified: false,
+      }),
+      this.filterData,
+    );
   };
 
   render(): ReactNode {
