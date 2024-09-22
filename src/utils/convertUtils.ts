@@ -1,4 +1,4 @@
 export const calculateDisplayPrice = (price: number, targetCurrencyPrice: number): number => {
-  const displayPrice = targetCurrencyPrice ? targetCurrencyPrice / price : price;
-  return parseFloat(displayPrice.toFixed(2));
+  const displayPrice = targetCurrencyPrice / price;
+  return Number(displayPrice.toPrecision(3));
 };
