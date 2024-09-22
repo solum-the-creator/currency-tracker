@@ -2,10 +2,12 @@ import { CurrencySection } from '@components/layout/CurrencySection';
 import { DateSection } from '@components/layout/DateSection';
 import { TimelineChartSection } from '@components/layout/TimelineChartSection';
 import { Button } from '@components/ui/Button';
+import { Notification } from '@components/ui/Notification';
 import { CurrenciesCode } from '@customTypes/currency';
 import { MarketData } from '@customTypes/market';
 import { getFormattedDate } from '@utils/dateUtils';
 import { filterCurrencyDataByDate } from '@utils/filterData';
+import { notificationObserver } from '@utils/observer/notificationObserver';
 import React, { ReactNode } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
@@ -147,6 +149,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
 
     this.setState({ initialData: updatedInitialData, isDataModified: true }, () => {
       this.filterData();
+      notificationObserver.notify('Data updated successfully');
     });
   };
 
@@ -170,6 +173,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
 
     return (
       <section className={styles.timelineSection}>
+        <Notification />
         <div className={styles.content}>
           <CurrencySection
             selectedCurrency={selectedCurrency}

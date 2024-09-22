@@ -1,0 +1,38 @@
+.notification {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(-2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: var(--width-medium);
+  z-index: var(--z-index-high);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.hide {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+
+  .close {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+}
