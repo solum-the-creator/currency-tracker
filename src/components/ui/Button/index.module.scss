@@ -14,6 +14,11 @@
     cursor: pointer;
     transition: all 0.2s ease;
 
+    &:disabled {
+      color: var(--text-color-gray);
+      cursor: not-allowed;
+    }
+
     &:hover {
       background-color: var(--divider-color);
       color: var(--text-color);

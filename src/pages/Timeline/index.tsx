@@ -1,13 +1,11 @@
-import { ChartModal } from '@components/layout/ChartModal';
-import CurrencyData from '@components/layout/CurrencyData';
+import { CurrencySection } from '@components/layout/CurrencySection';
+import { DateSection } from '@components/layout/DateSection';
+import { TimelineChartSection } from '@components/layout/TimelineChartSection';
 import { Button } from '@components/ui/Button';
-import { CurrencySelect } from '@components/ui/CurrencySelect';
-import { DateInput } from '@components/ui/DateInput';
-import { TimelineChart } from '@components/ui/TimelineChart';
-import { timelineCurenciesCodes } from '@constants/currency';
 import { CurrenciesCode } from '@customTypes/currency';
 import { MarketData } from '@customTypes/market';
 import { getFormattedDate } from '@utils/dateUtils';
+import { filterCurrencyDataByDate } from '@utils/filterData';
 import React, { ReactNode } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
@@ -37,24 +35,30 @@ type TimelineState = {
   originalData: MarketData[];
   filteredData: MarketData[];
   initialData: MarketData[];
+  isDataModified: boolean;
   selectedDataPoint?: MarketData;
 };
 
-const minDate = getFormattedDate(30);
-const maxDate = getFormattedDate(1);
-
 class Timeline extends React.Component<PropsFromRedux, TimelineState> {
+  minDate: string;
+
+  maxDate: string;
+
   constructor(props: PropsFromRedux) {
     super(props);
 
+    this.minDate = getFormattedDate(30);
+    this.maxDate = getFormattedDate(1);
+
     this.state = {
       selectedCurrency: 'BNB',
-      startDate: minDate,
-      endDate: maxDate,
+      startDate: this.minDate,
+      endDate: this.maxDate,
       filteredData: [],
       initialData: [],
       originalData: [],
       selectedDataPoint: undefined,
+      isDataModified: false,
     };
   }
 
@@ -85,23 +89,15 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
 
     fetchMarketData({
       currencyCode: selectedCurrency,
-      startDate: minDate,
-      endDate: maxDate,
+      startDate: this.minDate,
+      endDate: this.maxDate,
     });
   };
 
   filterData = () => {
     const { startDate, endDate, initialData } = this.state;
 
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    const filteredData = initialData.filter((entry) => {
-      const timeOpen = new Date(entry.time_open);
-      const timeClose = new Date(entry.time_close);
-
-      return (timeOpen >= start && timeOpen <= end) || (timeClose >= start && timeClose <= end);
-    });
+    const filteredData = filterCurrencyDataByDate(startDate, endDate, initialData);
 
     this.setState({ filteredData });
   };
@@ -111,26 +107,23 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
   };
 
   handleDateChange = (name: 'startDate' | 'endDate', value: string) => {
-    this.setState(
-      (prevState) => {
-        const newDates = {
-          ...prevState,
-          [name]: value,
-        };
+    this.setState((prevState) => {
+      const newDates = this.updateDates(prevState, name, value);
+      return newDates;
+    }, this.filterData);
+  };
 
-        if (name === 'startDate' && newDates.endDate < value) {
-          newDates.endDate = value;
-        }
-        if (name === 'endDate' && newDates.startDate > value) {
-          newDates.startDate = value;
-        }
+  updateDates = (prevState: TimelineState, name: 'startDate' | 'endDate', value: string) => {
+    const newDates = { ...prevState, [name]: value };
 
-        return newDates;
-      },
-      () => {
-        this.filterData();
-      },
-    );
+    if (name === 'startDate' && newDates.endDate < value) {
+      newDates.endDate = value;
+    }
+    if (name === 'endDate' && newDates.startDate > value) {
+      newDates.startDate = value;
+    }
+
+    return newDates;
   };
 
   handlePointClick = (data: MarketData) => {
@@ -152,7 +145,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
       dataPoint.time_close === selectedDataPoint.time_close ? { ...dataPoint, ...data } : dataPoint,
     );
 
-    this.setState({ initialData: updatedInitialData }, () => {
+    this.setState({ initialData: updatedInitialData, isDataModified: true }, () => {
       this.filterData();
     });
   };
@@ -161,65 +154,51 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     this.setState((prevState) => ({
       filteredData: prevState.originalData,
       selectedDataPoint: undefined,
+      isDataModified: false,
     }));
   };
 
   render(): ReactNode {
-    const { selectedCurrency, startDate, endDate, filteredData, selectedDataPoint } = this.state;
+    const {
+      selectedCurrency,
+      startDate,
+      endDate,
+      filteredData,
+      selectedDataPoint,
+      isDataModified,
+    } = this.state;
 
     return (
       <section className={styles.timelineSection}>
         <div className={styles.content}>
-          <div className={styles.currencySelect}>
-            <CurrencySelect
-              label="Choose currency:"
-              currencies={timelineCurenciesCodes}
-              selectedCurrency={selectedCurrency}
-              onCurrencyChange={this.handleCurrencyChange}
-            />
-            <CurrencyData code={selectedCurrency} />
-          </div>
-          <div className={styles.dateInputs}>
-            <DateInput
-              name="startDate"
-              value={startDate}
-              onChange={(value) => this.handleDateChange('startDate', value)}
-              minDate={minDate}
-              maxDate={maxDate}
-              label="Start date:"
-            />
-            <DateInput
-              name="endDate"
-              value={endDate}
-              onChange={(value) => this.handleDateChange('endDate', value)}
-              minDate={minDate}
-              maxDate={maxDate}
-              label="End date:"
-            />
-          </div>
+          <CurrencySection
+            selectedCurrency={selectedCurrency}
+            onCurrencyChange={this.handleCurrencyChange}
+          />
+          <DateSection
+            startDate={startDate}
+            endDate={endDate}
+            onDateChange={this.handleDateChange}
+          />
           <p className={styles.description}>
             <i>Click on any candle in the chart to view and edit its details.</i>
           </p>
           <div className={styles.reset}>
-            <Button className={styles.resetButton} onClick={this.handleReset}>
+            <Button
+              className={styles.resetButton}
+              onClick={this.handleReset}
+              disabled={!isDataModified}
+            >
               Reset Data
             </Button>
           </div>
-          {filteredData.length > 0 && (
-            <TimelineChart onPointClick={this.handlePointClick} marketData={filteredData} />
-          )}
-
-          {selectedDataPoint && (
-            <ChartModal
-              closePrice={selectedDataPoint.rate_close}
-              openPrice={selectedDataPoint.rate_open}
-              highPrice={selectedDataPoint.rate_high}
-              lowPrice={selectedDataPoint.rate_low}
-              date={selectedDataPoint.time_close}
-              onClose={this.handleCloseModal}
-              onSave={this.handleSaveModal}
-            />
-          )}
+          <TimelineChartSection
+            filteredData={filteredData}
+            onSaveModal={this.handleSaveModal}
+            onPointClick={this.handlePointClick}
+            onCloseModal={this.handleCloseModal}
+            selectedDataPoint={selectedDataPoint}
+          />
         </div>
       </section>
     );
