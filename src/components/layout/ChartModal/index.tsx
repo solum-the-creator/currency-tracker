@@ -2,6 +2,7 @@ import { Modal } from '@components/layout/Modal';
 import { Button } from '@components/ui/Button';
 import { Input } from '@components/ui/Input';
 import { MarketData } from '@customTypes/market';
+import { convertToShortPrice } from '@utils/convertUtils';
 import { formatDate } from '@utils/dateUtils';
 import React from 'react';
 
@@ -30,10 +31,10 @@ export class ChartModal extends React.Component<ChartModalProps, ChartModalState
   constructor(props: ChartModalProps) {
     super(props);
     this.state = {
-      openPrice: props.openPrice,
-      closePrice: props.closePrice,
-      highPrice: props.highPrice,
-      lowPrice: props.lowPrice,
+      openPrice: convertToShortPrice(props.openPrice),
+      closePrice: convertToShortPrice(props.closePrice),
+      highPrice: convertToShortPrice(props.highPrice),
+      lowPrice: convertToShortPrice(props.lowPrice),
     };
   }
 
