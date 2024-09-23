@@ -20,3 +20,6 @@ export const filterCurrencyDataByDate = (
 
 export const filterBanksByCurrency = (code: CurrenciesCode, data: Bank[]) =>
   data.filter((bank) => bank.currencies.includes(code));
+
+export const filterCurrenciesForSearch = (text: string, data: CurrenciesCode[]) =>
+  data.filter((currency) => currency.toLowerCase().includes(text.toLowerCase()));

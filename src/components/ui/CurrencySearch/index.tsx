@@ -1,12 +1,13 @@
 import SearchIcon from '@assets/images/icons/search.svg';
 import { CurrenciesCode } from '@customTypes/currency';
+import { filterCurrenciesForSearch } from '@utils/filterData';
 import React from 'react';
 
 import styles from './index.module.scss';
 
 type CurrencySearchProps = {
   currencies: CurrenciesCode[];
-  onCurrencySelect: (currency: CurrenciesCode) => void;
+  onCurrencySelect: (currency?: CurrenciesCode) => void;
 };
 
 type CurrencySearchState = {
@@ -26,19 +27,21 @@ export class CurrencySearch extends React.Component<CurrencySearchProps, Currenc
 
   handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchQuery = event.target.value;
-    const { currencies } = this.props;
+    const { currencies, onCurrencySelect } = this.props;
 
-    const filteredCurrencies = currencies.filter((currency) =>
-      currency.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
+    const filteredCurrencies = filterCurrenciesForSearch(searchQuery, currencies);
 
     this.setState({
       searchQuery,
       filteredCurrencies,
     });
+
+    if (!searchQuery) {
+      onCurrencySelect(undefined);
+    }
   };
 
-  handleCurrencySelect = (currency: CurrenciesCode) => {
+  handleCurrencySelect = (currency?: CurrenciesCode) => {
     const { onCurrencySelect } = this.props;
     this.setState({ searchQuery: currency, filteredCurrencies: [] });
 
