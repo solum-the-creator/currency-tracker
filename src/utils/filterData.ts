@@ -1,3 +1,5 @@
+import { Bank } from '@customTypes/bank';
+import { CurrenciesCode } from '@customTypes/currency';
 import { MarketData } from '@customTypes/market';
 
 export const filterCurrencyDataByDate = (
@@ -15,3 +17,6 @@ export const filterCurrencyDataByDate = (
     return (timeOpen >= start && timeOpen <= end) || (timeClose >= start && timeClose <= end);
   });
 };
+
+export const filterBanksByCurrency = (code: CurrenciesCode, data: Bank[]) =>
+  data.filter((bank) => bank.currencies.includes(code));

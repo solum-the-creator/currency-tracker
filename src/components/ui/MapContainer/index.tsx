@@ -1,9 +1,17 @@
+import { banksData } from '@constants/bankData';
+import { Bank } from '@customTypes/bank';
+import { CurrenciesCode } from '@customTypes/currency';
+import { filterBanksByCurrency } from '@utils/filterData';
 import mapboxgl from 'mapbox-gl';
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 
+import { BankPopup } from '../BankPopup';
 import styles from './index.module.scss';
 
-type MapContainerProps = Record<string, never>;
+type MapContainerProps = {
+  selectedCurrency?: CurrenciesCode;
+};
 
 type MapContainerState = {
   lng: number;
@@ -27,7 +35,7 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
   }
 
   componentDidMount(): void {
-    mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
+    mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN || '';
 
     if (this.mapContainerRef.current) {
       const { lng, lat } = this.state;
@@ -38,6 +46,15 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
         center: [lng, lat],
         zoom: 12,
       });
+
+      this.addBankMarkers();
+    }
+  }
+
+  componentDidUpdate(prevProps: Readonly<MapContainerProps>): void {
+    const { selectedCurrency } = this.props;
+    if (prevProps.selectedCurrency !== selectedCurrency) {
+      this.addBankMarkers();
     }
   }
 
@@ -46,6 +63,34 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
       this.mapInstance.remove();
     }
   }
+
+  addBankMarkers = (): void => {
+    if (!this.mapInstance) {
+      return;
+    }
+
+    const { selectedCurrency } = this.props;
+
+    const filteredBanks = selectedCurrency
+      ? filterBanksByCurrency(selectedCurrency, banksData)
+      : banksData;
+
+    filteredBanks.forEach((bank) => {
+      const popupNode = this.createPopup(bank);
+
+      new mapboxgl.Marker()
+        .setLngLat(bank.coordinates)
+        .setPopup(new mapboxgl.Popup({ offset: 25 }).setDOMContent(popupNode))
+        .addTo(this.mapInstance);
+    });
+  };
+
+  createPopup = (bank: Bank): HTMLDivElement => {
+    const popupNode = document.createElement('div');
+    const root = createRoot(popupNode);
+    root.render(<BankPopup name={bank.name} currencies={bank.currencies} />);
+    return popupNode;
+  };
 
   render(): React.ReactNode {
     return (
