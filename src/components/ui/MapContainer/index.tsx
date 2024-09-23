@@ -23,6 +23,8 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
 
   private mapInstance: mapboxgl.Map | null = null;
 
+  private markers: mapboxgl.Marker[] = [];
+
   constructor(props: MapContainerProps) {
     super(props);
 
@@ -54,6 +56,7 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
   componentDidUpdate(prevProps: Readonly<MapContainerProps>): void {
     const { selectedCurrency } = this.props;
     if (prevProps.selectedCurrency !== selectedCurrency) {
+      this.clearMarkers();
       this.addBankMarkers();
     }
   }
@@ -63,6 +66,11 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
       this.mapInstance.remove();
     }
   }
+
+  clearMarkers = (): void => {
+    this.markers.forEach((marker) => marker.remove());
+    this.markers = [];
+  };
 
   addBankMarkers = (): void => {
     if (!this.mapInstance) {
@@ -78,10 +86,12 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
     filteredBanks.forEach((bank) => {
       const popupNode = this.createPopup(bank);
 
-      new mapboxgl.Marker()
+      const marker = new mapboxgl.Marker()
         .setLngLat(bank.coordinates)
         .setPopup(new mapboxgl.Popup({ offset: 25 }).setDOMContent(popupNode))
         .addTo(this.mapInstance);
+
+      this.markers.push(marker);
     });
   };
 

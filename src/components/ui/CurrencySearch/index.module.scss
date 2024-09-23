@@ -1,0 +1,38 @@
+.currencySearch {
+  position: relative;
+
+  .search {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    color: var(--stroke-color);
+    background-color: var(--dark-blue-color);
+  }
+
+  .list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-blue-color);
+    border: none;
+    z-index: var(--z-index-high);
+
+    .item {
+      .button {
+        width: 100%;
+        padding: 0.5rem;
+        text-align: left;
+        background-color: var(--dark-blue-color);
+        color: var(--stroke-color);
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--blue-color);
+          color: var(--text-color-secondary);
+        }
+      }
+    }
+  }
+}

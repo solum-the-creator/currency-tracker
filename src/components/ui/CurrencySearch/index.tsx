@@ -1,0 +1,77 @@
+import { CurrenciesCode } from '@customTypes/currency';
+import React from 'react';
+
+import styles from './index.module.scss';
+
+type CurrencySearchProps = {
+  currencies: CurrenciesCode[];
+  onCurrencySelect: (currency: CurrenciesCode) => void;
+};
+
+type CurrencySearchState = {
+  searchQuery: string;
+  filteredCurrencies: CurrenciesCode[];
+};
+
+export class CurrencySearch extends React.Component<CurrencySearchProps, CurrencySearchState> {
+  constructor(props: CurrencySearchProps) {
+    super(props);
+
+    this.state = {
+      searchQuery: '',
+      filteredCurrencies: props.currencies,
+    };
+  }
+
+  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchQuery = event.target.value;
+    const { currencies } = this.props;
+
+    const filteredCurrencies = currencies.filter((currency) =>
+      currency.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+
+    this.setState({
+      searchQuery,
+      filteredCurrencies,
+    });
+  };
+
+  handleCurrencySelect = (currency: CurrenciesCode) => {
+    const { onCurrencySelect } = this.props;
+    this.setState({ searchQuery: currency, filteredCurrencies: [] });
+
+    onCurrencySelect(currency);
+  };
+
+  render(): React.ReactNode {
+    const { searchQuery, filteredCurrencies } = this.state;
+
+    return (
+      <div className={styles.currencySearch}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={this.handleInputChange}
+          placeholder="Currency search..."
+          className={styles.search}
+        />
+        {searchQuery && filteredCurrencies.length > 0 && (
+          <ul className={styles.list}>
+            {filteredCurrencies.map((currency) => (
+              <li key={currency} className={styles.item}>
+                <button
+                  type="button"
+                  onClick={() => this.handleCurrencySelect(currency)}
+                  className={styles.button}
+                >
+                  {currency}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  }
+}
