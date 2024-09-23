@@ -1,31 +1,54 @@
 .currencySearch {
   position: relative;
+  width: 100%;
+  max-width: var(--width-large);
+  display: flex;
+  justify-content: center;
 
   .search {
     width: 100%;
-    padding: 0.5rem;
+    padding: 1.25rem;
     box-sizing: border-box;
-    color: var(--stroke-color);
+    color: var(--text-color-secondary);
     background-color: var(--dark-blue-color);
+    border-radius: 0.5rem;
+  }
+
+  .icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.4rem;
+    height: 1.4rem;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
   }
 
   .list {
     position: absolute;
+    margin-top: 0.2rem;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--dark-blue-color);
     border: none;
     z-index: var(--z-index-high);
+
+    display: flex;
+    flex-direction: column;
 
     .item {
       .button {
         width: 100%;
-        padding: 0.5rem;
+        padding: 0.75rem;
         text-align: left;
         background-color: var(--dark-blue-color);
-        color: var(--stroke-color);
-        border: none;
+        color: var(--text-color-secondary);
+
+        border-radius: 0.25rem;
         cursor: pointer;
 
         &:hover {

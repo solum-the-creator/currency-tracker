@@ -1,3 +1,4 @@
+import SearchIcon from '@assets/images/icons/search.svg';
 import { CurrenciesCode } from '@customTypes/currency';
 import React from 'react';
 
@@ -56,6 +57,9 @@ export class CurrencySearch extends React.Component<CurrencySearchProps, Currenc
           placeholder="Currency search..."
           className={styles.search}
         />
+        <span className={styles.icon}>
+          <SearchIcon />
+        </span>
         {searchQuery && filteredCurrencies.length > 0 && (
           <ul className={styles.list}>
             {filteredCurrencies.map((currency) => (

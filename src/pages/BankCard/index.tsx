@@ -4,6 +4,8 @@ import { currenciesCodes } from '@constants/currency';
 import { CurrenciesCode } from '@customTypes/currency';
 import React from 'react';
 
+import styles from './index.module.scss';
+
 type BankCardProps = Record<string, never>;
 type BankCardState = {
   selectedCurrency?: CurrenciesCode;
@@ -25,11 +27,16 @@ export class BankCard extends React.Component<BankCardProps, BankCardState> {
     const { selectedCurrency } = this.state;
 
     return (
-      <div>
-        <h1>Ban1kCard</h1>
-        <CurrencySearch currencies={currenciesCodes} onCurrencySelect={this.handleCurrencySelect} />
+      <section className={styles.bankCardSection}>
+        <div className={styles.headerContainer}>
+          <h1 className={styles.title}>Search currency in the bank</h1>
+          <CurrencySearch
+            currencies={currenciesCodes}
+            onCurrencySelect={this.handleCurrencySelect}
+          />
+        </div>
         <MapContainer selectedCurrency={selectedCurrency} />
-      </div>
+      </section>
     );
   }
 }
