@@ -1,5 +1,5 @@
 import { Logo } from '@components/ui/Logo';
-import { Toggle } from '@components/ui/Toggle';
+import { ToggleTheme } from '@components/ui/ToggleTheme';
 import { navLinks } from '@constants/paths';
 import { NavLink } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ export const Header = () => {
           </ul>
         </nav>
         <div className={styles.themeControl}>
-          <Toggle />
+          <ToggleTheme />
         </div>
       </div>
     </header>

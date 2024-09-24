@@ -7,7 +7,7 @@ import { rootReducer } from './rootReducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList: ['currencies'],
+  whiteList: ['currencies', 'theme'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
