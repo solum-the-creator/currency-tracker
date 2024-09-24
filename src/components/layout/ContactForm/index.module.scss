@@ -1,0 +1,21 @@
+.contactForm {
+  width: 100%;
+  max-width: var(--width-xlarge);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  .formGroup {
+    width: 100%;
+  }
+
+  .button {
+    background-color: var(--text-color-accent);
+    color: var(--primary-color);
+  }
+
+  .messageInput {
+    height: 10rem;
+  }
+}

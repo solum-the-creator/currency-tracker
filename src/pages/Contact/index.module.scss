@@ -1,0 +1,32 @@
+.contactSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .contactWrapper {
+    padding: 4rem 2rem;
+    width: 100%;
+    max-width: var(--screen-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+    .title {
+      font-size: var(--font-size-xxl);
+      font-weight: var(--font-weight-light);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+}
+
+.description {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-light);
+  color: var(--text-color-secondary);
+}

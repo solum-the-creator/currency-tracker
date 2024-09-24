@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import React, { ChangeEvent } from 'react';
 
 import styles from './index.module.scss';
@@ -7,6 +8,7 @@ type InputProps = {
   name: string;
   placeholder?: string;
   onChange: (value: string) => void;
+  className?: string;
   label?: string;
   type?: 'number' | 'text';
   min?: number;
@@ -34,7 +36,7 @@ export class Input extends React.Component<InputProps, InputState> {
   };
 
   render(): React.ReactNode {
-    const { label, name, placeholder, min = 0, type = 'text' } = this.props;
+    const { label, name, placeholder, className, min = 0, type = 'text' } = this.props;
     const { inputValue } = this.state;
 
     return (
@@ -51,7 +53,7 @@ export class Input extends React.Component<InputProps, InputState> {
           id={name}
           name={name}
           onChange={this.handleChange}
-          className={styles.input}
+          className={cn(styles.input, className)}
           min={min}
         />
       </div>
