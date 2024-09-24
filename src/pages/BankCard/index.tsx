@@ -1,6 +1,5 @@
 import { CurrencySearch } from '@components/ui/CurrencySearch';
 import { MapContainer } from '@components/ui/MapContainer';
-import { currenciesCodes } from '@constants/currency';
 import { CurrenciesCode } from '@customTypes/currency';
 import React from 'react';
 
@@ -30,10 +29,7 @@ export class BankCard extends React.Component<BankCardProps, BankCardState> {
       <section className={styles.bankCardSection}>
         <div className={styles.headerContainer}>
           <h1 className={styles.title}>Search currency in the bank</h1>
-          <CurrencySearch
-            currencies={currenciesCodes}
-            onCurrencySelect={this.handleCurrencySelect}
-          />
+          <CurrencySearch onCurrencySelect={this.handleCurrencySelect} />
         </div>
         <MapContainer selectedCurrency={selectedCurrency} />
       </section>

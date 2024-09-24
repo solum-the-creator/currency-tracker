@@ -2,6 +2,10 @@ import SearchIcon from '@assets/images/icons/search.svg';
 import { CurrenciesCode } from '@customTypes/currency';
 import { filterCurrenciesForSearch } from '@utils/filterData';
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { RootState } from '@/store';
+import { selectCurrenciesCodes } from '@/store/currencies-info/selectors';
 
 import styles from './index.module.scss';
 
@@ -15,7 +19,7 @@ type CurrencySearchState = {
   filteredCurrencies: CurrenciesCode[];
 };
 
-export class CurrencySearch extends React.Component<CurrencySearchProps, CurrencySearchState> {
+class CurrencySearchComponent extends React.Component<CurrencySearchProps, CurrencySearchState> {
   constructor(props: CurrencySearchProps) {
     super(props);
 
@@ -82,3 +86,9 @@ export class CurrencySearch extends React.Component<CurrencySearchProps, Currenc
     );
   }
 }
+
+const mapStateToProps = (state: RootState) => ({
+  currencies: selectCurrenciesCodes(state),
+});
+
+export const CurrencySearch = connect(mapStateToProps)(CurrencySearchComponent);
