@@ -72,6 +72,16 @@ body {
   width: 100%;
 }
 
+body:global(.light-theme) {
+  input[type='date'] {
+    color-scheme: light;
+  }
+}
+
+input[type='date'] {
+  color-scheme: dark;
+}
+
 #root {
   display: flex;
   flex-direction: column;

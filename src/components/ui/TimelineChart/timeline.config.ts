@@ -197,7 +197,7 @@ const axisArrowPlugin = {
     } = chart;
 
     const arrowSize = 10;
-    const arrowColor = '#fff';
+    const arrowColor = `#B3B3B4`;
     const labelColor = '#B3B3B4';
     const labelFont = '14px Arial';
     const xOffset = 20;

@@ -12,7 +12,7 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background-color: #02461f;
+    background-color: var(--blink-dot-color);
     position: relative;
 
     .innerCircle {
@@ -21,7 +21,7 @@
       width: 1rem;
       height: 1rem;
       border-radius: 50%;
-      background-color: #019840;
+      background-color: var(--blink-inner-color);
       animation: pulse 2s infinite ease-in-out;
     }
   }

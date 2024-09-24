@@ -13,6 +13,9 @@
   --dark-blue-color: #1b2028;
   --blue-color: #3e4e5e;
 
+  --blink-dot-color: #02461f;
+  --blink-inner-color: #019840;
+
   --text-gradient: linear-gradient(90.18deg, #00ce2c 0.18%, #aedf23 49.3%, #a3dc00 99.88%);
   --background-gradient: linear-gradient(250deg, #121212 11.77%, #24794021 91.12%);
 
@@ -56,4 +59,26 @@
   --z-index-low: 1;
   --z-index-medium: 5;
   --z-index-high: 10;
+}
+
+body:global(.light-theme) {
+  --primary-color: #f3f3f3;
+  --secondary-color: #e6e6e6;
+  --text-color: #030304;
+  --text-color-secondary: #202025;
+  --text-color-gray: #4d4d4d;
+  --text-color-light-gray: #7a7a7a;
+  --text-color-accent: #8fdd33;
+  --accent-color: #00bc4f;
+  --divider-color: #d7d7d7;
+  --stroke-color: #b0b0b0;
+  --background-color: #f9f9f9;
+  --dark-blue-color: #e3e3e3;
+  --blue-color: #cdcdcd;
+
+  --blink-dot-color: #21d36b;
+  --blink-inner-color: #00ff6a;
+
+  --text-gradient: linear-gradient(90.18deg, #00ce2c 0.18%, #aedf23 49.3%, #a3dc00 99.88%);
+  --background-gradient: linear-gradient(250deg, #f0f0f0 11.77%, #d4ffd4 91.12%);
 }
