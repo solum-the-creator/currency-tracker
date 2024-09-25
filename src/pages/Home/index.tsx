@@ -1,3 +1,4 @@
+import { ErrorBoundary } from '@components/ErrorBoundary';
 import { CurrencyGrid } from '@components/layout/CurrencyGrid';
 import { useSelector } from 'react-redux';
 
@@ -18,7 +19,9 @@ export const Home = () => {
   return (
     <section className={styles.currencySection}>
       <div className={styles.content}>
-        <CurrencyGrid title="Quotes" currencyList={data} />
+        <ErrorBoundary fallback={<p>Error loading currency list</p>}>
+          <CurrencyGrid title="Quotes" currencyList={data} />
+        </ErrorBoundary>
       </div>
     </section>
   );

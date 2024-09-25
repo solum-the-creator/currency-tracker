@@ -1,3 +1,4 @@
+import { ErrorBoundary } from '@components/ErrorBoundary';
 import { ContactBlock } from '@components/layout/ContactBlock';
 import { ContactList } from '@components/layout/ContactBlock/ContactList';
 import { ContactForm } from '@components/layout/ContactForm';
@@ -20,7 +21,9 @@ export const Contact: React.FC = () => {
           </ContactBlock>
 
           <ContactBlock title="Get in Touch">
-            <ContactForm />
+            <ErrorBoundary fallback={<p>Error loading contact form</p>}>
+              <ContactForm />
+            </ErrorBoundary>
           </ContactBlock>
         </div>
       </div>
