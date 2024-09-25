@@ -3,6 +3,7 @@ import { CurrencySection } from '@components/layout/CurrencySection';
 import { DateSection } from '@components/layout/DateSection';
 import { TimelineChartSection } from '@components/layout/TimelineChartSection';
 import { Button } from '@components/ui/Button';
+import { CommonError } from '@components/ui/errors/CommonError';
 import { Loader } from '@components/ui/Loader';
 import { Notification } from '@components/ui/Notification';
 import { CurrenciesCode } from '@customTypes/currency';
@@ -176,10 +177,14 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
       isDataModified,
     } = this.state;
 
-    const { loading } = this.props;
+    const { loading, error } = this.props;
 
     if (loading) {
       return <Loader />;
+    }
+
+    if (error) {
+      return <CommonError message={`Error: ${error}`} />;
     }
 
     return (

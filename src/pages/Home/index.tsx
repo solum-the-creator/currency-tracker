@@ -1,5 +1,6 @@
 import { ErrorBoundary } from '@components/ErrorBoundary';
 import { CurrencyGrid } from '@components/layout/CurrencyGrid';
+import { CommonError } from '@components/ui/errors/CommonError';
 import { Loader } from '@components/ui/Loader';
 import { useSelector } from 'react-redux';
 
@@ -15,7 +16,7 @@ export const Home = () => {
   }
 
   if (error) {
-    return <p>Ошибка: {error}</p>;
+    return <CommonError message={`Error: ${error}`} />;
   }
 
   return (
