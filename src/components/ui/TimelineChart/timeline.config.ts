@@ -1,20 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { colors } from '@constants/colors';
 import { DataChart, DataConfigType } from '@customTypes/timeline';
 import { ChartOptions, Plugin } from 'chart.js';
-
-const colors = {
-  green: '#16C782',
-  red: '#EA3943',
-  grey: '#1C1C1D',
-  orange: '#FF971D',
-};
 
 const data: DataConfigType = {
   datasets: [
     {
       label: 'Chart',
       data: [],
-      backgroundColor: (ctx: any): string => {
+      backgroundColor: (ctx): string => {
         const {
           raw: { o, c },
         } = ctx;
