@@ -4,6 +4,10 @@
   justify-content: center;
   padding: 2rem 3.5rem;
 
+  @media screen and (max-width: 768px) {
+    padding: 2rem 2rem;
+  }
+
   .lastUpdate {
     display: flex;
     align-items: center;
@@ -13,6 +17,10 @@
       font-size: var(--font-size-xxl);
       font-weight: var(--font-weight-light);
       color: var(--text-color-secondary);
+
+      @media screen and (max-width: 560px) {
+        font-size: var(--font-size-lg);
+      }
     }
   }
 }

@@ -58,10 +58,6 @@
           font-size: 1.2rem;
           font-weight: var(--font-weight-light);
 
-          @media screen and (max-width: 768px) {
-            font-size: var(--font-size-sm);
-          }
-
           .active {
             color: var(--text-color-accent);
           }

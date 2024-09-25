@@ -5,6 +5,18 @@
   justify-content: space-between;
   gap: 3.5rem;
 
+  @media screen and (max-width: 1180px) {
+    justify-content: center;
+  }
+
+  .empty {
+    display: flex;
+
+    @media screen and (max-width: 1180px) {
+      display: none;
+    }
+  }
+
   .title {
     display: flex;
     flex-direction: column;

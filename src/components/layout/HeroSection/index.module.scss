@@ -37,6 +37,10 @@
             text-align: center;
             padding-right: 0;
           }
+
+          @media screen and (max-width: 480px) {
+            font-size: var(--font-size-xxl);
+          }
         }
 
         .descriptionWrapper {
@@ -54,6 +58,10 @@
             max-width: var(--width-large);
             text-align: center;
             line-height: 1.8;
+
+            @media screen and (max-width: 480px) {
+              font-size: var(--font-size-sm);
+            }
           }
         }
       }

@@ -29,12 +29,20 @@
     .currencyName {
       font-size: 2rem;
       color: var(--text-color-secondary);
+
+      @media screen and (max-width: 480px) {
+        font-size: var(--font-size-lg);
+      }
     }
 
     .currencyValue {
       font-size: 2rem;
       font-weight: var(--font-weight-light);
       color: var(--text-color-light-gray);
+
+      @media screen and (max-width: 480px) {
+        font-size: var(--font-size-lg);
+      }
     }
   }
 }
