@@ -1,5 +1,6 @@
 import { ErrorBoundary } from '@components/ErrorBoundary';
 import { CurrencyGrid } from '@components/layout/CurrencyGrid';
+import { Loader } from '@components/ui/Loader';
 import { useSelector } from 'react-redux';
 
 import { selectCurrencies } from '@/store/currencies-info/selectors';
@@ -10,8 +11,9 @@ export const Home = () => {
   const { data = [], loading, error } = useSelector(selectCurrencies);
 
   if (loading) {
-    return <p>Загрузка...</p>;
+    return <Loader />;
   }
+
   if (error) {
     return <p>Ошибка: {error}</p>;
   }

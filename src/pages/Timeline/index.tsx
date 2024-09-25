@@ -3,6 +3,7 @@ import { CurrencySection } from '@components/layout/CurrencySection';
 import { DateSection } from '@components/layout/DateSection';
 import { TimelineChartSection } from '@components/layout/TimelineChartSection';
 import { Button } from '@components/ui/Button';
+import { Loader } from '@components/ui/Loader';
 import { Notification } from '@components/ui/Notification';
 import { CurrenciesCode } from '@customTypes/currency';
 import { MarketData } from '@customTypes/market';
@@ -174,6 +175,12 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
       selectedDataPoint,
       isDataModified,
     } = this.state;
+
+    const { loading } = this.props;
+
+    if (loading) {
+      return <Loader />;
+    }
 
     return (
       <section className={styles.timelineSection}>

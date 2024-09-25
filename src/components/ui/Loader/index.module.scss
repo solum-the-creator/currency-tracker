@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loadingContainer {
+    position: relative;
+
+    .loadingProgress {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+
+      &::before {
+        content: '';
+        position: absolute;
+
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        border: 5px solid transparent;
+        border-top-color: var(--text-color-accent);
+        border-right-color: var(--text-color-accent);
+
+        animation: spin 1s linear infinite;
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

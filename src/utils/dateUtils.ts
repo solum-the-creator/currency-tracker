@@ -11,7 +11,7 @@ export const isUpdateDayPassed = (lastUpdate: number) => {
 
 export const formatTime = (timestamp: number | null): string => {
   if (timestamp === null) {
-    return '-';
+    return '';
   }
 
   const date = new Date(timestamp);
