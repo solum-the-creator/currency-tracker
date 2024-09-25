@@ -16,12 +16,12 @@ export const fetchMarketData = createAsyncThunk<MarketData[], FetchMarketDataPar
     });
 
     const marketData: MarketData[] = response.data.map((item) => ({
-      time_open: item.time_open,
-      time_close: item.time_close,
-      rate_open: item.rate_open,
-      rate_high: item.rate_high,
-      rate_low: item.rate_low,
-      rate_close: item.rate_close,
+      timeOpen: item.time_open,
+      timeClose: item.time_close,
+      rateOpen: item.rate_open,
+      rateHigh: item.rate_high,
+      rateLow: item.rate_low,
+      rateClose: item.rate_close,
     }));
 
     return marketData;

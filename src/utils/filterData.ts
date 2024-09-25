@@ -11,8 +11,8 @@ export const filterCurrencyDataByDate = (
   const end = new Date(endDate);
 
   return data.filter((entry) => {
-    const timeOpen = new Date(entry.time_open);
-    const timeClose = new Date(entry.time_close);
+    const timeOpen = new Date(entry.timeOpen);
+    const timeClose = new Date(entry.timeClose);
 
     return (timeOpen >= start && timeOpen <= end) || (timeClose >= start && timeClose <= end);
   });

@@ -1,13 +1,15 @@
 import { CurrenciesCode } from './currency';
 
 export type MarketData = {
-  time_open: string;
-  time_close: string;
-  rate_open: number;
-  rate_high: number;
-  rate_low: number;
-  rate_close: number;
+  timeOpen: string;
+  timeClose: string;
+  rateOpen: number;
+  rateHigh: number;
+  rateLow: number;
+  rateClose: number;
 };
+
+export type MarketDataWithoutTime = Omit<MarketData, 'timeOpen' | 'timeClose'>;
 
 export type MarketState = {
   data: MarketData[];

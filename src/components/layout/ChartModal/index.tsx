@@ -1,14 +1,12 @@
 import { Modal } from '@components/layout/Modal';
 import { Button } from '@components/ui/Button';
 import { Input } from '@components/ui/Input';
-import { MarketData } from '@customTypes/market';
+import { MarketDataWithoutTime } from '@customTypes/market';
 import { convertToShortPrice } from '@utils/convertUtils';
 import { formatDate } from '@utils/dateUtils';
 import React from 'react';
 
 import styles from './index.module.scss';
-
-type MarketDataWithoutTime = Omit<MarketData, 'time_open' | 'time_close'>;
 
 type ChartModalProps = {
   date: string;
@@ -51,10 +49,10 @@ export class ChartModal extends React.Component<ChartModalProps, ChartModalState
     }
 
     onSave({
-      rate_open: openPrice,
-      rate_close: closePrice,
-      rate_high: highPrice,
-      rate_low: lowPrice,
+      rateOpen: openPrice,
+      rateClose: closePrice,
+      rateHigh: highPrice,
+      rateLow: lowPrice,
     });
 
     onClose();

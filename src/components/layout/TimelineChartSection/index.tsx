@@ -1,12 +1,12 @@
 import { TimelineChart } from '@components/ui/TimelineChart';
-import { MarketData } from '@customTypes/market';
+import { MarketData, MarketDataWithoutTime } from '@customTypes/market';
 import React from 'react';
 
 import { ChartModal } from '../ChartModal';
 
 type TimelineChartSectionProps = {
   filteredData: MarketData[];
-  onSaveModal: (data: Omit<MarketData, 'time_open' | 'time_close'>) => void;
+  onSaveModal: (data: MarketDataWithoutTime) => void;
   onPointClick: (data: MarketData) => void;
   onCloseModal: () => void;
   selectedDataPoint?: MarketData;
@@ -23,11 +23,11 @@ export class TimelineChartSection extends React.PureComponent<TimelineChartSecti
         )}
         {selectedDataPoint && (
           <ChartModal
-            closePrice={selectedDataPoint.rate_close}
-            openPrice={selectedDataPoint.rate_open}
-            highPrice={selectedDataPoint.rate_high}
-            lowPrice={selectedDataPoint.rate_low}
-            date={selectedDataPoint.time_close}
+            closePrice={selectedDataPoint.rateClose}
+            openPrice={selectedDataPoint.rateOpen}
+            highPrice={selectedDataPoint.rateHigh}
+            lowPrice={selectedDataPoint.rateLow}
+            date={selectedDataPoint.timeClose}
             onClose={onCloseModal}
             onSave={onSaveModal}
           />

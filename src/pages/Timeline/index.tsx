@@ -7,7 +7,7 @@ import { CommonError } from '@components/ui/errors/CommonError';
 import { Loader } from '@components/ui/Loader';
 import { Notification } from '@components/ui/Notification';
 import { CurrenciesCode } from '@customTypes/currency';
-import { MarketData } from '@customTypes/market';
+import { MarketData, MarketDataWithoutTime } from '@customTypes/market';
 import { getFormattedDate } from '@utils/dateUtils';
 import { filterCurrencyDataByDate } from '@utils/filterData';
 import { notificationObserver } from '@utils/observer/notificationObserver';
@@ -43,6 +43,8 @@ type TimelineState = {
   isDataModified: boolean;
   selectedDataPoint?: MarketData;
 };
+
+type InputName = 'startDate' | 'endDate';
 
 class Timeline extends React.Component<PropsFromRedux, TimelineState> {
   minDate: string;
@@ -111,14 +113,14 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     this.setState({ selectedCurrency: newCurrency });
   };
 
-  handleDateChange = (name: 'startDate' | 'endDate', value: string) => {
+  handleDateChange = (name: InputName, value: string) => {
     this.setState((prevState) => {
       const newDates = this.updateDates(prevState, name, value);
       return newDates;
     }, this.filterData);
   };
 
-  updateDates = (prevState: TimelineState, name: 'startDate' | 'endDate', value: string) => {
+  updateDates = (prevState: TimelineState, name: InputName, value: string) => {
     const newDates = { ...prevState, [name]: value };
 
     if (name === 'startDate' && newDates.endDate < value) {
@@ -139,7 +141,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     this.setState({ selectedDataPoint: undefined });
   };
 
-  handleSaveModal = (data: Omit<MarketData, 'time_open' | 'time_close'>) => {
+  handleSaveModal = (data: MarketDataWithoutTime) => {
     const { selectedDataPoint, initialData } = this.state;
 
     if (!selectedDataPoint) {
@@ -147,7 +149,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     }
 
     const updatedInitialData = initialData.map((dataPoint) =>
-      dataPoint.time_close === selectedDataPoint.time_close ? { ...dataPoint, ...data } : dataPoint,
+      dataPoint.timeClose === selectedDataPoint.timeClose ? { ...dataPoint, ...data } : dataPoint,
     );
 
     this.setState({ initialData: updatedInitialData, isDataModified: true }, () => {

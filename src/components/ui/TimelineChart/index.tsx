@@ -66,12 +66,12 @@ export class TimelineChart extends React.Component<TimelineChartProps, TimelineC
     const { marketData } = this.props;
 
     return marketData.map((item) => ({
-      x: new Date(item.time_open).getTime(),
-      o: item.rate_open,
-      h: item.rate_high,
-      l: item.rate_low,
-      c: item.rate_close,
-      s: [item.rate_open, item.rate_close],
+      x: new Date(item.timeOpen).getTime(),
+      o: item.rateOpen,
+      h: item.rateHigh,
+      l: item.rateLow,
+      c: item.rateClose,
+      s: [item.rateOpen, item.rateClose],
     }));
   }
 
