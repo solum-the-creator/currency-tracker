@@ -28,7 +28,9 @@ export class DateInput extends React.Component<DateInputProps, DateInputState> {
     const { value } = event.target;
     const { onChange, value: currentValue, maxDate, minDate } = this.props;
 
-    if (value === '' || value === null || value > maxDate || value < minDate) {
+    const isValidValue = value === '' || value === null || value > maxDate || value < minDate;
+
+    if (isValidValue) {
       this.setState({ value: currentValue });
     } else {
       this.setState({ value });

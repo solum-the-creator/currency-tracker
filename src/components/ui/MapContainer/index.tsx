@@ -25,12 +25,14 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
 
   private markers: mapboxgl.Marker[] = [];
 
+  private initialCoords: [number, number] = [27.555, 53.906];
+
   constructor(props: MapContainerProps) {
     super(props);
 
     this.state = {
-      lng: 27.555,
-      lat: 53.906,
+      lng: this.initialCoords[0],
+      lat: this.initialCoords[1],
     };
 
     this.mapContainerRef = React.createRef();
@@ -103,12 +105,6 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
   };
 
   render(): React.ReactNode {
-    return (
-      <div
-        className={styles.mapContainer}
-        style={{ height: '460px', width: '100%' }}
-        ref={this.mapContainerRef}
-      />
-    );
+    return <div className={styles.mapContainer} ref={this.mapContainerRef} />;
   }
 }

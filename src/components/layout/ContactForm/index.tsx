@@ -17,7 +17,13 @@ export const ContactForm = () => {
     setIsSubmitted(true);
   };
 
-  return !isSubmitted ? (
+  if (isSubmitted) {
+    return (
+      <p className={styles.message}>Thank you for your message! We will get back to you soon.</p>
+    );
+  }
+
+  return (
     <form onSubmit={handleSubmit} className={styles.contactForm}>
       <div className={styles.formGroup}>
         <Input
@@ -54,7 +60,5 @@ export const ContactForm = () => {
         Send Message
       </Button>
     </form>
-  ) : (
-    <p className={styles.message}>Thank you for your message! We will get back to you soon.</p>
   );
 };
