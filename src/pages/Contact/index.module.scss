@@ -13,6 +13,7 @@
     gap: 4rem;
 
     .title {
+      text-align: center;
       font-size: var(--font-size-xxl);
       font-weight: var(--font-weight-light);
     }
@@ -21,11 +22,16 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }
 
 .description {
+  max-width: 30rem;
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-light);
   color: var(--text-color-secondary);
