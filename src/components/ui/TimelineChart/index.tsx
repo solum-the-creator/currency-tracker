@@ -3,6 +3,7 @@ import 'chartjs-adapter-date-fns';
 import { MarketData } from '@customTypes/market';
 import { DataChart, DataConfigType } from '@customTypes/timeline';
 import { Chart as ChartJS, registerables, TimeSeriesScale, Tooltip } from 'chart.js';
+import zoomPlugin from 'chartjs-plugin-zoom';
 import React from 'react';
 import { Chart as ChartComponent } from 'react-chartjs-2';
 
@@ -18,7 +19,7 @@ export type TimelineChartState = {
   data: DataChart[];
 };
 
-ChartJS.register(Tooltip, TimeSeriesScale, ...registerables);
+ChartJS.register(Tooltip, TimeSeriesScale, zoomPlugin, ...registerables);
 
 export class TimelineChart extends React.Component<TimelineChartProps, TimelineChartState> {
   getConfig(): DataConfigType {
@@ -79,11 +80,11 @@ export class TimelineChart extends React.Component<TimelineChartProps, TimelineC
     return (
       <div className={styles.timelineChart}>
         <ChartComponent
+          className={styles.chart}
           type="bar"
           data={this.getConfig()}
           options={TimelineConfig.options}
           plugins={TimelineConfig.plugins}
-          height={600}
           onClick={this.handleClick}
         />
       </div>

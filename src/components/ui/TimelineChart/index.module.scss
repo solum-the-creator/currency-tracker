@@ -1,4 +1,9 @@
 .timelineChart {
   max-width: var(--screen-lg);
   width: 100%;
+
+  .chart {
+    width: 100%;
+    height: 36rem;
+  }
 }
