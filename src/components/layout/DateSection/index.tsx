@@ -1,5 +1,5 @@
 import { DateInput } from '@components/ui/DateInput';
-import { getFormattedDate } from '@utils/dateUtils';
+import { addDays, getFormattedDate } from '@utils/dateUtils';
 import React from 'react';
 
 import styles from './index.module.scss';
@@ -22,8 +22,27 @@ export class DateSection extends React.PureComponent<DateSectionProps> {
     this.maxDate = getFormattedDate(1);
   }
 
+  handleStartDateChange = (value: string) => {
+    const { onDateChange } = this.props;
+
+    if (onDateChange) {
+      onDateChange('startDate', value);
+    }
+  };
+
+  handleEndDateChange = (value: string) => {
+    const { onDateChange } = this.props;
+
+    if (onDateChange) {
+      onDateChange('endDate', value);
+    }
+  };
+
   render(): React.ReactNode {
-    const { startDate, endDate, onDateChange } = this.props;
+    const { startDate, endDate } = this.props;
+
+    const minEndDate = startDate ? addDays(startDate, 10) : this.minDate;
+    const effectiveMaxEndDate = this.maxDate;
 
     return (
       <div className={styles.dateSection}>
@@ -31,7 +50,7 @@ export class DateSection extends React.PureComponent<DateSectionProps> {
           name="startDate"
           label="Start date:"
           value={startDate}
-          onChange={(value) => onDateChange('startDate', value)}
+          onChange={this.handleStartDateChange}
           minDate={this.minDate}
           maxDate={this.maxDate}
         />
@@ -40,9 +59,9 @@ export class DateSection extends React.PureComponent<DateSectionProps> {
           name="endDate"
           label="End date:"
           value={endDate}
-          onChange={(value) => onDateChange('endDate', value)}
-          minDate={this.minDate}
-          maxDate={this.maxDate}
+          onChange={this.handleEndDateChange}
+          minDate={minEndDate}
+          maxDate={effectiveMaxEndDate}
         />
       </div>
     );
