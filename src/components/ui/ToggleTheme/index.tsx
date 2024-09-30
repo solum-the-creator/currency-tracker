@@ -17,6 +17,12 @@ export const ToggleTheme: React.FC = () => {
   };
 
   return (
-    <input className={styles.toggle} onChange={handleChange} checked={checked} type="checkbox" />
+    <input
+      className={styles.toggle}
+      onChange={handleChange}
+      checked={checked}
+      type="checkbox"
+      data-testid="theme-toggle"
+    />
   );
 };
