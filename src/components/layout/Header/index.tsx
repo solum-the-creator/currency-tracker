@@ -22,7 +22,7 @@ export const Header = () => {
           <Logo />
         </div>
 
-        <nav className={cn(styles.nav, isOpen && styles.open)}>
+        <nav className={cn(styles.nav, isOpen && styles.open)} data-testid="navigation-menu">
           <ul className={styles.navList}>
             {navLinks.map((link) => (
               <li key={link.path} className={styles.navItem}>
