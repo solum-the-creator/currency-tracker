@@ -26,7 +26,9 @@ class CurrencyData extends React.PureComponent<CurrencyDataProps> {
         <div className={syles.icon}>{this.getIcon(code)}</div>
         <div className={syles.info}>
           {selectedData && <div className={syles.name}>{selectedData.name}</div>}
-          <div className={syles.code}>{code}</div>
+          <div className={syles.code} data-testid="currency-code">
+            {code}
+          </div>
         </div>
       </div>
     );

@@ -80,6 +80,7 @@ export class TimelineChart extends React.Component<TimelineChartProps, TimelineC
     return (
       <div className={styles.timelineChart}>
         <ChartComponent
+          data-testid="timeline-chart"
           className={styles.chart}
           type="bar"
           data={this.getConfig()}
