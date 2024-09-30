@@ -11,6 +11,7 @@ import { MarketData, MarketDataWithoutTime } from '@customTypes/market';
 import { getFormattedDate } from '@utils/dateUtils';
 import { filterCurrencyDataByDate } from '@utils/filterData';
 import { notificationObserver } from '@utils/observer/notificationObserver';
+import { differenceInDays } from 'date-fns';
 import React, { ReactNode } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
@@ -106,7 +107,13 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
 
     const filteredData = filterCurrencyDataByDate(startDate, endDate, initialData);
 
-    this.setState({ filteredData });
+    const isThirtyDays = differenceInDays(new Date(endDate), new Date(startDate)) === 29;
+
+    this.setState({ filteredData }, () => {
+      if (isThirtyDays) {
+        notificationObserver.notify('Chart is displaying data for the last 30 days');
+      }
+    });
   };
 
   handleCurrencyChange = (newCurrency: CurrenciesCode) => {
