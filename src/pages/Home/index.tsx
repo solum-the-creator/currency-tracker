@@ -8,7 +8,7 @@ import { selectCurrencies } from '@/store/currencies-info/selectors';
 import styles from './index.module.scss';
 
 export const Home = () => {
-  const { data = [], loading, error } = useSelector(selectCurrencies);
+  const { data, loading, error } = useSelector(selectCurrencies);
 
   if (loading) {
     return <Loader />;
