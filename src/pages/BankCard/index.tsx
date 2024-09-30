@@ -1,4 +1,3 @@
-import { ErrorBoundary } from '@components/ErrorBoundary';
 import { CurrencySearch } from '@components/ui/CurrencySearch';
 import { MapContainer } from '@components/ui/MapContainer';
 import { CurrenciesCode } from '@customTypes/currency';
@@ -30,13 +29,9 @@ export class BankCard extends React.Component<BankCardProps, BankCardState> {
       <section className={styles.bankCardSection}>
         <div className={styles.headerContainer}>
           <h1 className={styles.title}>Search currency in the bank</h1>
-          <ErrorBoundary fallback={<p>Error loading currency list</p>}>
-            <CurrencySearch onCurrencySelect={this.handleCurrencySelect} />
-          </ErrorBoundary>
+          <CurrencySearch onCurrencySelect={this.handleCurrencySelect} />
         </div>
-        <ErrorBoundary fallback={<p>Error loading map</p>}>
-          <MapContainer selectedCurrency={selectedCurrency} />
-        </ErrorBoundary>
+        <MapContainer selectedCurrency={selectedCurrency} />
       </section>
     );
   }

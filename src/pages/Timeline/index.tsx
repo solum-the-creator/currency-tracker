@@ -1,4 +1,3 @@
-import { ErrorBoundary } from '@components/ErrorBoundary';
 import { CurrencySection } from '@components/layout/CurrencySection';
 import { DateSection } from '@components/layout/DateSection';
 import { TimelineChartSection } from '@components/layout/TimelineChartSection';
@@ -198,25 +197,19 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
 
     return (
       <section className={styles.timelineSection}>
-        <ErrorBoundary fallback={<p>Error loading notification</p>}>
-          <Notification />
-        </ErrorBoundary>
+        <Notification />
 
         <div className={styles.content}>
-          <ErrorBoundary fallback={<p>Error loading currency list</p>}>
-            <CurrencySection
-              selectedCurrency={selectedCurrency}
-              onCurrencyChange={this.handleCurrencyChange}
-            />
-          </ErrorBoundary>
+          <CurrencySection
+            selectedCurrency={selectedCurrency}
+            onCurrencyChange={this.handleCurrencyChange}
+          />
 
-          <ErrorBoundary fallback={<p>Error loading date range</p>}>
-            <DateSection
-              startDate={startDate}
-              endDate={endDate}
-              onDateChange={this.handleDateChange}
-            />
-          </ErrorBoundary>
+          <DateSection
+            startDate={startDate}
+            endDate={endDate}
+            onDateChange={this.handleDateChange}
+          />
 
           <p className={styles.description}>
             <i>Click on any candle in the chart to view and edit its details.</i>
@@ -231,15 +224,13 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
             </Button>
           </div>
 
-          <ErrorBoundary fallback={<p>Error loading currency chart</p>}>
-            <TimelineChartSection
-              filteredData={filteredData}
-              onSaveModal={this.handleSaveModal}
-              onPointClick={this.handlePointClick}
-              onCloseModal={this.handleCloseModal}
-              selectedDataPoint={selectedDataPoint}
-            />
-          </ErrorBoundary>
+          <TimelineChartSection
+            filteredData={filteredData}
+            onSaveModal={this.handleSaveModal}
+            onPointClick={this.handlePointClick}
+            onCloseModal={this.handleCloseModal}
+            selectedDataPoint={selectedDataPoint}
+          />
         </div>
       </section>
     );

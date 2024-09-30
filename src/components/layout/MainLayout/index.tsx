@@ -1,4 +1,3 @@
-import { ErrorBoundary } from '@components/ErrorBoundary';
 import { Footer } from '@components/layout/Footer';
 import { Header } from '@components/layout/Header';
 import { HeroSection } from '@components/layout/HeroSection';
@@ -35,9 +34,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <Header />
       <main className={styles.main}>
         <HeroSection />
-        <ErrorBoundary>
-          <LastUpdate />
-        </ErrorBoundary>
+        <LastUpdate />
         {children}
       </main>
       <Footer />

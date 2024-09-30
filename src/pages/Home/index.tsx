@@ -1,4 +1,3 @@
-import { ErrorBoundary } from '@components/ErrorBoundary';
 import { CurrencyGrid } from '@components/layout/CurrencyGrid';
 import { CommonError } from '@components/ui/errors/CommonError';
 import { Loader } from '@components/ui/Loader';
@@ -22,9 +21,7 @@ export const Home = () => {
   return (
     <section className={styles.currencySection}>
       <div className={styles.content}>
-        <ErrorBoundary fallback={<p>Error loading currency list</p>}>
-          <CurrencyGrid title="Quotes" currencyList={data} />
-        </ErrorBoundary>
+        <CurrencyGrid title="Quotes" currencyList={data} />
       </div>
     </section>
   );

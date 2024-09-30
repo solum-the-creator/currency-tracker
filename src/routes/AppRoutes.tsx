@@ -1,3 +1,4 @@
+import { ErrorBoundary } from '@components/ErrorBoundary';
 import { MainLayout } from '@components/layout/MainLayout';
 import { UrlPaths } from '@constants/paths';
 import { BankCard } from '@pages/BankCard';
@@ -8,14 +9,16 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const AppRoutes = () => {
   return (
-    <MainLayout>
-      <Routes>
-        <Route path={UrlPaths.HOME} element={<Home />} />
-        <Route path={UrlPaths.TIMELINE} element={<Timeline />} />
-        <Route path={UrlPaths.BANK_CARD} element={<BankCard />} />
-        <Route path={UrlPaths.CONTACT} element={<Contact />} />
-        <Route path="*" element={<Navigate to={UrlPaths.HOME} />} />
-      </Routes>
-    </MainLayout>
+    <ErrorBoundary>
+      <MainLayout>
+        <Routes>
+          <Route path={UrlPaths.HOME} element={<Home />} />
+          <Route path={UrlPaths.TIMELINE} element={<Timeline />} />
+          <Route path={UrlPaths.BANK_CARD} element={<BankCard />} />
+          <Route path={UrlPaths.CONTACT} element={<Contact />} />
+          <Route path="*" element={<Navigate to={UrlPaths.HOME} />} />
+        </Routes>
+      </MainLayout>
+    </ErrorBoundary>
   );
 };
