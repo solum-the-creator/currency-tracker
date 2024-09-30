@@ -21,7 +21,12 @@ export const CurrencySelect: React.FC<CurrencySelectProps> = ({
     <div className={styles.select_wrapper}>
       <label className={styles.select} htmlFor="currencySelect">
         {label && <span className={styles.label}>{label}</span>}
-        <select id="currencySelect" value={selectedCurrency} onChange={handleCurrencyChange}>
+        <select
+          data-testid="currency-select"
+          id="currencySelect"
+          value={selectedCurrency}
+          onChange={handleCurrencyChange}
+        >
           {currencies.map((currency) => (
             <option key={currency} value={currency}>
               {currency}

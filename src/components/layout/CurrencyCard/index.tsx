@@ -42,6 +42,7 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({ code, name, price })
         role="button"
         tabIndex={0}
         aria-label={`Convert currency ${name}`}
+        data-testid="currency-card"
       >
         <div className={styles.currencyCardIcon}>{icon}</div>
         <div className={styles.currencyCardContent}>

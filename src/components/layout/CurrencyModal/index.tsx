@@ -36,7 +36,7 @@ export const CurrencyModal: React.FC<CurrencyModalProps> = ({
           selectedCurrency={convertCode}
           onCurrencyChange={onCurrencyChange}
         />
-        <p className={styles.price}>
+        <p className={styles.price} data-testid="currency-conversion-result">
           Price: <span className={styles.priceValue}>{price}</span>
         </p>
       </div>

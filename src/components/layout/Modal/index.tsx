@@ -29,7 +29,12 @@ export const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
   };
 
   return createPortal(
-    <div className={styles.modal} role="presentation" onClick={handleOverlayClick}>
+    <div
+      className={styles.modal}
+      role="presentation"
+      onClick={handleOverlayClick}
+      data-testid="currency-modal"
+    >
       <div
         className={styles.content}
         ref={modalRef}
