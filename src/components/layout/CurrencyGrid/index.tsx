@@ -16,13 +16,8 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({ title, currencyList 
         <div className={styles.line} />
       </div>
       <div className={styles.empty} />
-      {currencyList.map((currency) => (
-        <CurrencyCard
-          key={currency.code}
-          code={currency.code}
-          name={currency.name}
-          price={currency.price}
-        />
+      {currencyList.map(({ code, name, price }) => (
+        <CurrencyCard key={code} code={code} name={name} price={price} />
       ))}
     </div>
   );

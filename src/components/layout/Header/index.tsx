@@ -24,13 +24,10 @@ export const Header = () => {
 
         <nav className={cn(styles.nav, isOpen && styles.open)} data-testid="navigation-menu">
           <ul className={styles.navList}>
-            {navLinks.map((link) => (
-              <li key={link.path} className={styles.navItem}>
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) => (isActive ? styles.active : '')}
-                >
-                  {link.name}
+            {navLinks.map(({ name, path }) => (
+              <li key={path} className={styles.navItem}>
+                <NavLink to={path} className={({ isActive }) => (isActive ? styles.active : '')}>
+                  {name}
                 </NavLink>
               </li>
             ))}

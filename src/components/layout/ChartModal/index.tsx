@@ -28,11 +28,14 @@ type ChartModalState = {
 export class ChartModal extends React.Component<ChartModalProps, ChartModalState> {
   constructor(props: ChartModalProps) {
     super(props);
+
+    const { openPrice, closePrice, highPrice, lowPrice } = props;
+
     this.state = {
-      openPrice: convertToShortPrice(props.openPrice),
-      closePrice: convertToShortPrice(props.closePrice),
-      highPrice: convertToShortPrice(props.highPrice),
-      lowPrice: convertToShortPrice(props.lowPrice),
+      openPrice: convertToShortPrice(openPrice),
+      closePrice: convertToShortPrice(closePrice),
+      highPrice: convertToShortPrice(highPrice),
+      lowPrice: convertToShortPrice(lowPrice),
     };
   }
 

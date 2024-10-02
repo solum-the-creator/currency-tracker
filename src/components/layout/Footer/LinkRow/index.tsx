@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import styles from './index.module.scss';
 
@@ -21,15 +22,15 @@ export const LinkRow: React.FC<LinkRowProps> = ({ title, linkList }) => {
       </button>
       <div className={cn(styles.links, isOpen && styles.open)}>
         {linkList.map((link) => (
-          <a
+          <NavLink
             key={link.to}
             className={styles.link}
             target="_blank"
             rel="noopener noreferrer"
-            href={`https://${link.to}`}
+            to={`https://${link.to}`}
           >
             {link.label}
-          </a>
+          </NavLink>
         ))}
       </div>
     </div>

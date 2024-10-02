@@ -11,7 +11,7 @@ export type CurrencySelectProps = {
 export const CurrencySelect: React.FC<CurrencySelectProps> = ({
   selectedCurrency,
   currencies,
-  onCurrencyChange = () => {},
+  onCurrencyChange,
   label = '',
 }) => {
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
