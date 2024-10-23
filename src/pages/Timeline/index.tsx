@@ -44,8 +44,6 @@ type TimelineState = {
   selectedDataPoint?: MarketData;
 };
 
-type InputName = 'startDate' | 'endDate';
-
 class Timeline extends React.Component<PropsFromRedux, TimelineState> {
   minDate: string;
 
@@ -119,24 +117,8 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
     this.setState({ selectedCurrency: newCurrency });
   };
 
-  handleDateChange = (name: InputName, value: string) => {
-    this.setState((prevState) => {
-      const newDates = this.updateDates(prevState, name, value);
-      return newDates;
-    }, this.filterData);
-  };
-
-  updateDates = (prevState: TimelineState, name: InputName, value: string) => {
-    const newDates = { ...prevState, [name]: value };
-
-    if (name === 'startDate' && newDates.endDate < value) {
-      newDates.endDate = value;
-    }
-    if (name === 'endDate' && newDates.startDate > value) {
-      newDates.startDate = value;
-    }
-
-    return newDates;
+  handleDateChange = (startDate: string, endDate: string) => {
+    this.setState(() => ({ startDate, endDate }), this.filterData);
   };
 
   handlePointClick = (data: MarketData) => {
@@ -208,7 +190,7 @@ class Timeline extends React.Component<PropsFromRedux, TimelineState> {
           <DateSection
             startDate={startDate}
             endDate={endDate}
-            onDateChange={this.handleDateChange}
+            onRangeSelect={this.handleDateChange}
           />
 
           <p className={styles.description}>

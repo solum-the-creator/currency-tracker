@@ -1,5 +1,6 @@
-import { DateInput } from '@components/ui/DateInput';
-import { addDays, getFormattedDate } from '@utils/dateUtils';
+import { dateTheme } from '@constants/dateTheme';
+import { RangeCalendar } from '@solumzy/datepicker';
+import { getFormattedDate } from '@utils/dateUtils';
 import React from 'react';
 
 import styles from './index.module.scss';
@@ -7,7 +8,7 @@ import styles from './index.module.scss';
 type DateSectionProps = {
   startDate: string;
   endDate: string;
-  onDateChange?: (name: 'startDate' | 'endDate', value: string) => void;
+  onRangeSelect?: (startDate: string, endDate: string) => void;
 };
 
 export class DateSection extends React.PureComponent<DateSectionProps> {
@@ -22,46 +23,26 @@ export class DateSection extends React.PureComponent<DateSectionProps> {
     this.maxDate = getFormattedDate(1);
   }
 
-  handleStartDateChange = (value: string) => {
-    const { onDateChange } = this.props;
+  handleRangeSelect = (startDate: Date, endDate: Date) => {
+    const { onRangeSelect } = this.props;
 
-    if (onDateChange) {
-      onDateChange('startDate', value);
-    }
-  };
-
-  handleEndDateChange = (value: string) => {
-    const { onDateChange } = this.props;
-
-    if (onDateChange) {
-      onDateChange('endDate', value);
+    if (onRangeSelect) {
+      onRangeSelect(startDate.toISOString(), endDate.toISOString());
     }
   };
 
   render(): React.ReactNode {
     const { startDate, endDate } = this.props;
 
-    const minEndDate = startDate ? addDays(startDate, 10) : this.minDate;
-    const effectiveMaxEndDate = this.maxDate;
-
     return (
       <div className={styles.dateSection}>
-        <DateInput
-          name="startDate"
-          label="Start date:"
-          value={startDate}
-          onChange={this.handleStartDateChange}
-          minDate={this.minDate}
-          maxDate={this.maxDate}
-        />
-
-        <DateInput
-          name="endDate"
-          label="End date:"
-          value={endDate}
-          onChange={this.handleEndDateChange}
-          minDate={minEndDate}
-          maxDate={effectiveMaxEndDate}
+        <RangeCalendar
+          theme={dateTheme}
+          onRangeSelect={this.handleRangeSelect}
+          rangeStart={new Date(startDate)}
+          rangeEnd={new Date(endDate)}
+          minDate={new Date(this.minDate)}
+          maxDate={new Date(this.maxDate)}
         />
       </div>
     );

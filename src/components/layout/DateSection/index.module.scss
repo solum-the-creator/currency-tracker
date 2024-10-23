@@ -5,4 +5,10 @@
   @media screen and (max-width: 568px) {
     flex-direction: column;
   }
+
+  :global {
+    input {
+      background-color: transparent;
+    }
+  }
 }
